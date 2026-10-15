@@ -5733,3 +5733,312 @@ a.subject-card {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(214, 181, 109, 0.3);
 }
+/* =========================================================
+   كروت الاختيار - Responsive
+========================================================= */
+
+.choices {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+
+    justify-content: center;
+    align-items: stretch;
+
+    margin: 0 auto;
+}
+
+.choice-card {
+    width: 100%;
+    min-height: 320px;
+}
+
+
+/* =========================================================
+   Responsive
+========================================================= */
+
+/* لاب صغير */
+@media (max-width: 1100px) {
+
+    .choices {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    .choice-card {
+        min-height: 280px;
+        padding: 20px 15px;
+    }
+
+    .choice-icon {
+        width: 75px;
+        height: 75px;
+    }
+
+    .choice-icon i {
+        font-size: 35px;
+    }
+
+    .choice-card h2 {
+        font-size: 18px;
+    }
+
+    .choice-card span {
+        min-width: 130px;
+        height: 45px;
+        font-size: 16px;
+    }
+
+}
+
+
+/* تابلت */
+@media (max-width: 850px) {
+
+    .choices {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .choice-card {
+        min-height: 250px;
+        padding: 18px 12px;
+    }
+
+    .choice-icon {
+        width: 65px;
+        height: 65px;
+    }
+
+    .choice-icon i {
+        font-size: 30px;
+    }
+
+    .choice-card h2 {
+        font-size: 16px;
+    }
+
+    .choice-card span {
+        min-width: 110px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+}
+
+
+/* موبايل */
+@media (max-width: 600px) {
+
+    .choices {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .choice-card {
+        min-height: 280px;
+        padding: 25px 20px;
+    }
+
+    .choice-icon {
+        width: 85px;
+        height: 85px;
+    }
+
+    .choice-icon i {
+        font-size: 40px;
+    }
+
+    .choice-card h2 {
+        font-size: 22px;
+    }
+
+    .choice-card span {
+        min-width: 150px;
+        height: 50px;
+        font-size: 18px;
+    }
+
+}
+
+
+/* =========================================================
+   شارة "للبكالوريا"
+========================================================= */
+
+.card-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    padding: 6px 14px;
+
+    background: linear-gradient(135deg, #f3c44d, #d4a63d);
+    color: #071A16;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    border-radius: 20px;
+
+    box-shadow: 0 0 12px rgba(243, 196, 77, 0.5);
+
+    animation: badgePulse 2s infinite ease-in-out;
+
+    z-index: 10;
+    pointer-events: none;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 12px rgba(243, 196, 77, 0.5);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(243, 196, 77, 0.8);
+    }
+}
+/* =========================================================
+   صفحة التقييمات
+========================================================= */
+
+.review-card {
+    width: 100%;
+
+    padding: 30px 25px;
+
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background: rgba(13, 43, 36, 0.5);
+
+    border: 1px solid rgba(214, 181, 109, 0.2);
+
+    border-radius: var(--radius-card);
+
+    backdrop-filter: blur(15px);
+
+    transition: var(--transition);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.review-card:hover {
+    border-color: rgba(214, 181, 109, 0.5);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+
+/* النجوم */
+.review-stars {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    margin-bottom: 18px;
+
+    font-size: 22px;
+
+    color: #D6B56D;
+
+    text-shadow: 0 0 10px rgba(214, 181, 109, 0.4);
+}
+
+.review-stars .fa-regular {
+    color: rgba(214, 181, 109, 0.4);
+}
+
+
+/* نص التقييم */
+.review-text {
+    font-size: 16px;
+
+    color: #E8E8E8;
+
+    line-height: 1.8;
+
+    margin-bottom: 15px;
+
+    max-width: 600px;
+}
+
+
+/* اسم الطالب */
+.review-author {
+    font-size: 14px;
+
+    color: #D6B56D;
+
+    font-weight: bold;
+
+    margin-top: 10px;
+
+    position: relative;
+
+    padding-top: 15px;
+}
+
+.review-author::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 40px;
+
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #D6B56D,
+        transparent
+    );
+}
+
+
+/* =========================================================
+   Responsive
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .review-card {
+        padding: 25px 18px;
+    }
+
+    .review-stars {
+        font-size: 18px;
+    }
+
+    .review-text {
+        font-size: 14px;
+    }
+
+    .review-author {
+        font-size: 13px;
+    }
+
+}
