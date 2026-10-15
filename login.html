@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>تسجيل الدخول - منصة القيصر</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-page">
+
+    <!-- خلفية الحروف العربية -->
+    <div class="arabic-background">
+
+        <div class="arabic-symbol symbol-1">ع</div>
+        <div class="arabic-symbol symbol-2">ض</div>
+        <div class="arabic-symbol symbol-3">ق</div>
+        <div class="arabic-symbol symbol-4">م</div>
+
+        <div class="book">
+            <div class="book-page"></div>
+            <div class="book-page"></div>
+        </div>
+
+        <div class="pen"></div>
+
+        <div class="floating-letter letter-1">أ</div>
+        <div class="floating-letter letter-2">ب</div>
+        <div class="floating-letter letter-3">ل</div>
+        <div class="floating-letter letter-4">ي</div>
+
+    </div>
+
+    <!-- طبقة تعتيم الخلفية -->
+    <div class="dark-overlay"></div>
+
+    <!-- صندوق تسجيل الدخول -->
+    <main class="login-container">
+
+        <div class="login-box">
+
+            <div class="login-header">
+
+                <div class="logo-circle" id="logoCircle">
+                    <img src="1.jpeg" alt="شعار منصة القيصر">
+                </div>
+
+                <h1>تسجيل الدخول</h1>
+
+                <p>أهلاً بك في منصة القيصر التعليمية</p>
+
+            </div>
+
+            <!-- الدخول بكود الطالب والباسورد -->
+            <form id="loginForm" autocomplete="off">
+
+                <div class="input-box">
+
+                    <span class="input-icon">🔑</span>
+
+                    <input type="text" id="email" name="code" placeholder="كود الطالب مثال MM-2027-001"
+                        autocomplete="off" autocapitalize="characters" spellcheck="false" required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <span class="input-icon">🔒</span>
+
+                    <input type="password" id="password" name="password" placeholder="كلمة المرور"
+                        autocomplete="new-password" required>
+
+                </div>
+
+                <!-- مكان ظهور رسائل الخطأ -->
+                <div id="errorBox" class="error-box" role="alert" style="display: none;"></div>
+
+                <button type="submit" class="login-button">
+
+                    دخول إلى المنصة
+
+                    <span>←</span>
+
+                </button>
+
+            </form>
+
+            <!-- لا يوجد رابط إنشاء حساب جديد -->
+
+        </div>
+
+    </main>
+
+    <!-- تكبير الشعار عند الضغط عليه -->
+    <div class="logo-popup" id="logoPopup">
+
+        <span class="close-logo" id="closeLogo">&times;</span>
+
+        <img src="1.jpeg" alt="شعار منصة القيصر">
+
+    </div>
+
+    <!-- ملفات Supabase والجافاسكريبت -->
+    <script src="supabase.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

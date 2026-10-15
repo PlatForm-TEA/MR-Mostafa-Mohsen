@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إكمال البيانات - منصة القيصر</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-page">
+
+    <div class="arabic-background">
+        <div class="arabic-symbol symbol-1">ع</div>
+        <div class="arabic-symbol symbol-2">ض</div>
+        <div class="arabic-symbol symbol-3">ق</div>
+        <div class="arabic-symbol symbol-4">م</div>
+    </div>
+
+    <div class="dark-overlay"></div>
+
+    <main class="login-container">
+
+        <div class="login-box">
+
+            <div class="login-header">
+
+                <div class="logo-circle">
+                    <img src="1.jpeg" alt="شعار منصة القيصر">
+                </div>
+
+                <h1>إكمال البيانات</h1>
+
+                <p>كود الطالب: <strong id="displayCode">---</strong></p>
+
+            </div>
+
+            <form id="completeProfileForm">
+
+                <div class="input-box">
+                    <span class="input-icon">👤</span>
+                    <input type="text" id="fullName" placeholder="الاسم بالكامل" autocomplete="name" required>
+                </div>
+
+                <div class="input-box">
+                    <span class="input-icon">📱</span>
+                    <input type="tel" id="phone" placeholder="رقم هاتف الطالب (01xxxxxxxxx)" autocomplete="tel"
+                        inputmode="numeric" required>
+                </div>
+
+                <div class="input-box">
+                    <span class="input-icon">👨‍👩‍👧</span>
+                    <input type="tel" id="parentPhone" placeholder="رقم هاتف ولي الأمر (01xxxxxxxxx)" autocomplete="tel"
+                        inputmode="numeric" required>
+                </div>
+
+                <div id="errorBox" class="error-box" style="display: none;"></div>
+
+                <button type="submit" class="login-button">
+                    إنشاء الحساب
+                    <span>←</span>
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+
+    <script src="supabase.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

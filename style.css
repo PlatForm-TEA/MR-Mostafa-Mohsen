@@ -1,0 +1,5735 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    background: #071A16;
+    color: #FFFFFF;
+}
+
+
+/* =========================================================
+   متغيرات الهوية
+========================================================= */
+
+:root {
+
+    --bg-main: #071A16;
+    --green-main: #0D2B24;
+    --gold-main: #D6B56D;
+    --gold-dark: #A98542;
+    --text-main: #FFFFFF;
+    --text-soft: #B8C8C2;
+
+    --radius-card: 20px;
+    --radius-btn: 14px;
+
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 15px 40px rgba(214, 181, 109, 0.15);
+
+    --transition: 0.3s ease;
+}
+
+
+/* =========================================================
+   LOGIN PAGE
+========================================================= */
+
+.login-page {
+    min-height: 100vh;
+    width: 100%;
+    background: var(--bg-main);
+    color: var(--text-main);
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+/* ARABIC BACKGROUND */
+
+.arabic-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 35%, rgba(214, 181, 109, 0.15), transparent 35%),
+        linear-gradient(135deg, #0D2B24, #071A16 60%, #020907);
+}
+
+.arabic-symbol {
+    position: absolute;
+    color: rgba(214, 181, 109, 0.08);
+    font-size: 170px;
+    font-family: "Times New Roman", serif;
+    user-select: none;
+    pointer-events: none;
+}
+
+.symbol-1 {
+    top: 5%;
+    right: 5%;
+    transform: rotate(-15deg);
+}
+
+.symbol-2 {
+    bottom: 5%;
+    left: 5%;
+    transform: rotate(20deg);
+}
+
+.symbol-3 {
+    top: 35%;
+    left: 8%;
+}
+
+.symbol-4 {
+    bottom: 25%;
+    right: 8%;
+}
+
+
+/* BOOK */
+
+.book {
+    position: absolute;
+    left: 50%;
+    bottom: 8%;
+    transform: translateX(-50%);
+    width: 270px;
+    height: 90px;
+    opacity: 0.2;
+}
+
+.book-page {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    border: 2px solid rgba(214, 181, 109, 0.4);
+    border-radius: 50% 50% 10px 10px;
+}
+
+.book-page:first-child {
+    top: 10px;
+}
+
+.book-page:last-child {
+    top: 35px;
+}
+
+
+/* PEN */
+
+.pen {
+    position: absolute;
+    width: 230px;
+    height: 7px;
+    background: rgba(214, 181, 109, 0.15);
+    right: 12%;
+    bottom: 23%;
+    transform: rotate(-35deg);
+    border-radius: 10px;
+}
+
+.pen::after {
+    content: "";
+    position: absolute;
+    left: -16px;
+    top: -5px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 20px solid rgba(214, 181, 109, 0.15);
+}
+
+
+/* FLOATING LETTERS */
+
+.floating-letter {
+    position: absolute;
+    font-size: 55px;
+    color: rgba(214, 181, 109, 0.1);
+    animation: letterFloat 5s ease-in-out infinite;
+    user-select: none;
+    pointer-events: none;
+}
+
+.letter-1 {
+    top: 20%;
+    left: 20%;
+}
+
+.letter-2 {
+    top: 15%;
+    right: 20%;
+    animation-delay: 1s;
+}
+
+.letter-3 {
+    bottom: 30%;
+    left: 25%;
+    animation-delay: 2s;
+}
+
+.letter-4 {
+    bottom: 25%;
+    right: 20%;
+    animation-delay: 3s;
+}
+
+@keyframes letterFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(8deg);
+    }
+}
+
+
+/* DARK OVERLAY */
+
+.dark-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    pointer-events: none;
+}
+
+
+/* LOGIN CONTAINER */
+
+.login-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    overflow-y: auto;
+}
+
+
+/* LOGIN BOX */
+
+.login-box {
+    width: min(430px, 92vw);
+    padding: 32px 35px 35px;
+    border-radius: 28px;
+    background: rgba(13, 43, 36, 0.55);
+    border: 1px solid rgba(214, 181, 109, 0.25);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+    animation: loginAppear 1s ease forwards;
+}
+
+@keyframes loginAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.85) translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+/* LOGIN HEADER */
+
+.login-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+
+/* LOGO CIRCLE */
+
+.logo-circle {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(214, 181, 109, 0.1);
+    border: 2px solid rgba(214, 181, 109, 0.4);
+    box-shadow: 0 0 30px rgba(214, 181, 109, 0.2);
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.logo-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(214, 181, 109, 0.4);
+}
+
+.logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+
+/* LOGIN TITLE */
+
+.login-header h1 {
+    margin-top: 16px;
+    color: var(--text-main);
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.login-header p {
+    margin-top: 7px;
+    color: var(--text-soft);
+    font-size: 14px;
+}
+
+
+/* INPUT BOX */
+
+.input-box {
+    position: relative;
+    margin-bottom: 18px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 52px;
+    border-radius: 30px;
+    border: 1px solid rgba(214, 181, 109, 0.25);
+    outline: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    padding: 0 50px 0 20px;
+    font-size: 15px;
+    transition: var(--transition);
+}
+
+.input-box input::placeholder {
+    color: rgba(184, 200, 194, 0.6);
+}
+
+.input-box input:focus {
+    border-color: var(--gold-main);
+    background: rgba(214, 181, 109, 0.08);
+    box-shadow: 0 0 20px rgba(214, 181, 109, 0.15);
+}
+
+.input-icon {
+    position: absolute;
+    right: 18px;
+    top: 15px;
+    font-size: 18px;
+}
+
+
+/* REMEMBER */
+
+.remember-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    margin: 5px 5px 20px;
+    color: var(--text-soft);
+}
+
+.remember-row label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.remember-row input {
+    accent-color: var(--gold-main);
+}
+
+.remember-row a {
+    color: var(--gold-main);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.remember-row a:hover {
+    opacity: 0.75;
+}
+
+
+/* LOGIN BUTTON */
+
+.login-button {
+    width: 100%;
+    height: 52px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--gold-main), var(--gold-dark));
+    color: #071A16;
+    font-size: 16px;
+    font-weight: bold;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.login-button span {
+    display: inline-block;
+    transition: var(--transition);
+}
+
+.login-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(214, 181, 109, 0.3);
+}
+
+.login-button:hover span {
+    transform: translateX(-5px);
+}
+
+.login-button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+
+/* LOGIN FOOTER */
+
+.login-footer {
+    text-align: center;
+    margin-top: 25px;
+    color: var(--text-soft);
+    font-size: 13px;
+}
+
+.arabic-line {
+    margin-top: 12px;
+    font-size: 18px;
+    color: var(--gold-main);
+    letter-spacing: 4px;
+}
+
+
+/* LOGO POPUP */
+
+.logo-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.logo-popup.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.logo-popup img {
+    width: min(500px, 80vw);
+    height: min(500px, 80vw);
+    object-fit: contain;
+    border-radius: 20px;
+    transform: scale(0.5);
+    transition: 0.4s ease;
+}
+
+.logo-popup.show img {
+    transform: scale(1);
+}
+
+.close-logo {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: var(--gold-main);
+    font-size: 45px;
+    cursor: pointer;
+    line-height: 1;
+    transition: var(--transition);
+}
+
+.close-logo:hover {
+    transform: scale(1.2) rotate(90deg);
+}
+
+
+/* =========================================================
+   CHOOSE PAGE
+========================================================= */
+
+.choose-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, rgba(214, 181, 109, 0.12), transparent 40%),
+        linear-gradient(135deg, #0D2B24, #071A16 60%, #020907);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+}
+
+.choose-container {
+    width: min(900px, 95%);
+    text-align: center;
+}
+
+.choose-logo {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    padding: 4px;
+    background: rgba(214, 181, 109, 0.1);
+    border: 2px solid rgba(214, 181, 109, 0.4);
+    box-shadow: 0 0 30px rgba(214, 181, 109, 0.2);
+    overflow: hidden;
+}
+
+.choose-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.choose-header h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.choose-header p {
+    color: var(--text-soft);
+    font-size: 15px;
+    margin-bottom: 40px;
+}
+
+.choices {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.choice-card {
+    padding: 35px 25px;
+    border-radius: var(--radius-card);
+    background: rgba(13, 43, 36, 0.6);
+    border: 1px solid rgba(214, 181, 109, 0.2);
+    backdrop-filter: blur(15px);
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    color: var(--text-main);
+    font-family: inherit;
+}
+
+.choice-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold-main);
+    box-shadow: var(--shadow-hover);
+}
+
+.choice-icon {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: rgba(214, 181, 109, 0.15);
+    color: var(--gold-main);
+    font-size: 32px;
+}
+
+.choice-card h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.choice-card p {
+    color: var(--text-soft);
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.choice-card span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--gold-main);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   HOME PAGE
+========================================================= */
+
+.home-page {
+    min-height: 100vh;
+    padding: 0 0 100px;
+    background:
+        radial-gradient(circle at top right, rgba(214, 181, 109, 0.08), transparent 30%),
+        linear-gradient(135deg, #071A16, #0D2B24 55%, #071510);
+    color: var(--text-main);
+}
+
+
+/* HOME HEADER */
+
+.home-header {
+    width: 100%;
+    min-height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 25px;
+    background: rgba(13, 43, 36, 0.5);
+    border-bottom: 1px solid rgba(214, 181, 109, 0.15);
+    backdrop-filter: blur(15px);
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    overflow: visible;
+}
+
+
+/* PLATFORM TITLE */
+
+.platform-title {
+    text-align: center;
+}
+
+.platform-title h1 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--gold-main);
+}
+
+.platform-title p {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--text-soft);
+}
+
+
+/* PROFILE */
+
+.profile-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(214, 181, 109, 0.12);
+    border: 1px solid rgba(214, 181, 109, 0.3);
+    font-size: 20px;
+    color: var(--gold-main);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.profile-icon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(214, 181, 109, 0.3);
+}
+
+
+/* =========================================================
+   SOCIAL SHARE MENU - قائمة عمودية
+========================================================= */
+
+.social-wrapper {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    z-index: 10000;
+}
+
+
+/* الزرار الرئيسي */
+
+.social-toggle {
+    position: relative;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(214, 181, 109, 0.35);
+    background: rgba(214, 181, 109, 0.12);
+    color: #D6B56D;
+    font-size: 19px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+}
+
+.social-toggle:hover {
+    background: rgba(214, 181, 109, 0.2);
+    box-shadow: 0 0 20px rgba(214, 181, 109, 0.3);
+}
+
+.social-toggle i {
+    transition: 0.4s ease;
+}
+
+.social-wrapper.open .social-toggle i {
+    transform: rotate(180deg);
+}
+
+.social-wrapper.open .social-toggle {
+    background: #D6B56D;
+    color: #071A16;
+}
+
+
+/* الأيقونات (القائمة العمودية) */
+
+.social-item {
+    position: absolute;
+    top: 55px;
+    left: 0;
+    width: 48px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #D6B56D;
+    background: rgba(13, 43, 36, 0.98);
+    border: 1px solid rgba(214, 181, 109, 0.4);
+    text-decoration: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px) scale(0.85);
+    transition:
+        transform 0.35s ease,
+        opacity 0.3s ease,
+        background 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    z-index: 10001;
+}
+
+
+/* لما الزرار يتفتح */
+
+.social-wrapper.open .social-item {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.social-wrapper.open .social-item:hover {
+    background: #D6B56D;
+    color: #071A16;
+    transform: translateY(0) scale(1.1);
+}
+
+
+/* ترتيب الأيقونات - كل واحدة بتنزل تحت التانية */
+
+.social-wrapper.open .social-whatsapp {
+    top: 60px;
+    transition-delay: 0s;
+}
+
+.social-wrapper.open .social-tiktok {
+    top: 112px;
+    transition-delay: 0.05s;
+}
+
+.social-wrapper.open .social-facebook {
+    top: 164px;
+    transition-delay: 0.1s;
+}
+
+.social-wrapper.open .social-youtube {
+    top: 216px;
+    transition-delay: 0.15s;
+}
+
+.social-wrapper.open .social-email {
+    top: 268px;
+    transition-delay: 0.2s;
+}
+
+.social-wrapper.open .social-phone {
+    top: 320px;
+    transition-delay: 0.25s;
+}
+
+/* ضمان عدم الاقتصاص */
+
+.social-wrapper,
+.social-wrapper * {
+    overflow: visible !important;
+}
+
+
+/* CONTENT */
+
+.home-content {
+    width: min(1100px, 92%);
+    margin: auto;
+}
+
+
+/* WELCOME */
+
+.welcome-section {
+    padding: 30px 5px 15px;
+    text-align: right;
+}
+
+.welcome-section h2 {
+    font-size: 26px;
+}
+
+.welcome-section h2 span {
+    color: var(--gold-main);
+}
+
+.welcome-section p {
+    margin: 8px 0;
+    color: var(--text-soft);
+    font-size: 14px;
+}
+
+.progress-line {
+    width: 65px;
+    height: 3px;
+    border-radius: 10px;
+    background: var(--gold-main);
+}
+
+
+/* QUOTE CARD */
+
+.quote-card {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 25px;
+    border-radius: var(--radius-card);
+    background: linear-gradient(135deg, rgba(214, 181, 109, 0.18), rgba(13, 43, 36, 0.5));
+    border: 1px solid rgba(214, 181, 109, 0.3);
+    margin-bottom: 30px;
+    backdrop-filter: blur(15px);
+}
+
+.quote-text {
+    text-align: center;
+    flex: 1;
+}
+
+.quote-text h3 {
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.quote-text p {
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: var(--gold-main);
+}
+
+.quote-text small {
+    color: rgba(184, 200, 194, 0.6);
+}
+
+.quote-icon {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: var(--gold-main);
+}
+
+
+/* SECTION TITLES */
+
+.section-title,
+.platform-sections>h2,
+.available-courses>h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+    font-size: 20px;
+    color: var(--text-main);
+}
+
+.section-title i {
+    color: var(--gold-main);
+}
+
+
+/* LAST LESSON */
+
+.last-lesson {
+    margin-bottom: 35px;
+}
+
+.lesson-card {
+    min-height: 145px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background: rgba(13, 43, 36, 0.5);
+    border: 1px solid rgba(214, 181, 109, 0.15);
+    border-radius: var(--radius-card);
+    backdrop-filter: blur(15px);
+    gap: 20px;
+}
+
+.lesson-info {
+    flex: 1;
+}
+
+.lesson-info>span {
+    font-size: 13px;
+    color: var(--gold-main);
+}
+
+.lesson-info h3 {
+    margin: 7px 0 3px;
+    font-size: 19px;
+}
+
+.lesson-info p {
+    color: var(--text-soft);
+    font-size: 12px;
+}
+
+.lesson-progress {
+    width: 90%;
+    height: 5px;
+    margin-top: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.lesson-progress-bar {
+    width: 60%;
+    height: 100%;
+    border-radius: 20px;
+    background: var(--gold-main);
+}
+
+.lesson-info small {
+    display: block;
+    margin-top: 6px;
+    color: rgba(184, 200, 194, 0.5);
+    font-size: 11px;
+}
+
+
+/* LESSON BUTTON */
+
+.lesson-button {
+    width: 150px;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: var(--radius-btn);
+    background: linear-gradient(135deg, var(--gold-main), var(--gold-dark));
+    color: #071A16;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.lesson-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(214, 181, 109, 0.3);
+}
+
+.lesson-button i {
+    font-size: 20px;
+}
+
+
+/* PLATFORM SECTIONS */
+
+.platform-sections {
+    margin-bottom: 35px;
+}
+
+.sections-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+
+/* SECTION CARD */
+
+.section-card {
+    position: relative;
+    min-height: 135px;
+    padding: 18px;
+    text-align: center;
+    background: rgba(13, 43, 36, 0.5);
+    border: 1px solid rgba(214, 181, 109, 0.15);
+    border-radius: 18px;
+    backdrop-filter: blur(15px);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(214, 181, 109, 0.5);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-icon {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: rgba(214, 181, 109, 0.15);
+    color: var(--gold-main);
+    font-size: 20px;
+}
+
+.section-card h3 {
+    margin: 5px 0;
+    font-size: 15px;
+}
+
+.section-card p {
+    color: var(--text-soft);
+    font-size: 11px;
+}
+
+.card-arrow {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold-main);
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+/* AVAILABLE COURSES */
+
+.available-courses {
+    margin-bottom: 35px;
+}
+
+.course-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    background: rgba(13, 43, 36, 0.5);
+    border: 1px solid rgba(214, 181, 109, 0.15);
+    border-radius: var(--radius-card);
+    transition: var(--transition);
+}
+
+.course-card:hover {
+    border-color: rgba(214, 181, 109, 0.4);
+    box-shadow: var(--shadow-hover);
+}
+
+.course-icon {
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 18px;
+    background: rgba(214, 181, 109, 0.15);
+    color: var(--gold-main);
+    font-size: 26px;
+}
+
+.course-info {
+    flex: 1;
+}
+
+.course-info h3 {
+    margin-bottom: 5px;
+    font-size: 17px;
+}
+
+.course-info p {
+    color: var(--text-soft);
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.course-info small {
+    color: rgba(184, 200, 194, 0.5);
+    font-size: 10px;
+}
+
+.course-card button {
+    border: none;
+    padding: 12px 20px;
+    border-radius: var(--radius-btn);
+    background: linear-gradient(135deg, var(--gold-main), var(--gold-dark));
+    color: #071A16;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.course-card button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(214, 181, 109, 0.3);
+}
+
+
+/* BOTTOM NAV */
+
+.bottom-navigation {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgba(7, 26, 22, 0.96);
+    border-top: 1px solid rgba(214, 181, 109, 0.2);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: rgba(184, 200, 194, 0.55);
+    font-size: 11px;
+    transition: var(--transition);
+    padding: 8px 12px;
+    border-radius: 12px;
+}
+
+.nav-item i {
+    font-size: 20px;
+}
+
+.nav-item.active {
+    color: var(--gold-main);
+}
+
+.nav-item.active i {
+    transform: scale(1.1);
+}
+
+.nav-item:hover {
+    color: var(--gold-main);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .home-content {
+        width: 92%;
+    }
+
+    .platform-title h1 {
+        font-size: 17px;
+    }
+
+    .platform-title p {
+        font-size: 11px;
+    }
+
+    .welcome-section h2 {
+        font-size: 22px;
+    }
+
+    .quote-card {
+        min-height: 110px;
+        padding: 15px;
+    }
+
+    .quote-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 36px;
+    }
+
+    .lesson-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .lesson-button {
+        width: 100%;
+        min-height: 55px;
+        flex-direction: row;
+    }
+
+    .sections-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .section-card {
+        min-height: 125px;
+        padding: 14px 10px;
+    }
+
+    .course-card {
+        flex-wrap: wrap;
+    }
+
+    .course-card button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .bottom-navigation {
+        height: 70px;
+    }
+
+    .nav-item span {
+        font-size: 10px;
+    }
+
+    .choices {
+        grid-template-columns: 1fr;
+    }
+
+    .choose-header h1 {
+        font-size: 24px;
+    }
+
+    .login-box {
+        padding: 28px 22px;
+    }
+
+    .login-header h1 {
+        font-size: 24px;
+    }
+
+    .arabic-symbol {
+        font-size: 120px;
+    }
+
+    .book {
+        width: 210px;
+    }
+}
+
+
+@media (max-width: 420px) {
+
+    .sections-grid {
+        gap: 8px;
+    }
+
+    .section-card h3 {
+        font-size: 13px;
+    }
+
+    .section-card p {
+        font-size: 9px;
+    }
+
+    .platform-title h1 {
+        font-size: 15px;
+    }
+
+    .profile-icon,
+    .social-toggle {
+        width: 42px;
+        height: 42px;
+    }
+
+    .social-wrapper {
+        width: 42px;
+        height: 42px;
+    }
+
+    .logo-circle {
+        width: 85px;
+        height: 85px;
+    }
+}
+
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .floating-letter,
+    .login-box {
+        animation: none;
+    }
+
+}
+
+/* =========================================================
+   Error Box + Signup Link
+========================================================= */
+
+.error-box {
+    display: none;
+    padding: 12px 16px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    background: rgba(217, 75, 75, 0.15);
+    border: 1px solid rgba(217, 75, 75, 0.4);
+    color: #ff8888;
+    font-size: 13px;
+    text-align: center;
+}
+
+.login-footer p {
+    color: var(--text-soft);
+}
+
+.signup-link {
+    color: var(--gold-main);
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 5px;
+    transition: var(--transition);
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+/* =========================================================
+   حل مشكلة التمرير على الشاشات القصيرة
+========================================================= */
+
+@media (max-height: 700px) {
+
+    .login-container {
+        align-items: flex-start;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+}
+
+@media (max-height: 600px) {
+
+    .login-box {
+        padding: 22px 25px;
+    }
+
+    .logo-circle {
+        width: 80px;
+        height: 80px;
+    }
+
+    .login-header h1 {
+        font-size: 22px;
+        margin-top: 10px;
+    }
+
+    .login-header p {
+        font-size: 12px;
+    }
+
+    .input-box input {
+        height: 46px;
+        font-size: 14px;
+    }
+
+    .login-button {
+        height: 46px;
+        font-size: 15px;
+    }
+
+    .login-header {
+        margin-bottom: 20px;
+    }
+
+    .input-box {
+        margin-bottom: 14px;
+    }
+
+}
+
+/* زرار تسجيل الخروج */
+
+.profile-icon {
+    border: 1px solid rgba(214, 181, 109, 0.3);
+    background: rgba(214, 181, 109, 0.12);
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.profile-icon:hover {
+    background: rgba(214, 181, 109, 0.2);
+    color: var(--gold-main);
+}
+
+/* =========================================================
+   صفحة الوحدة - الدروس
+========================================================= */
+
+/* زرار الرجوع */
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 10px 18px;
+    border-radius: 12px;
+    background: rgba(214, 181, 109, 0.12);
+    border: 1px solid rgba(214, 181, 109, 0.3);
+    color: var(--gold-main);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.back-btn:hover {
+    background: rgba(214, 181, 109, 0.22);
+    transform: translateX(-3px);
+}
+
+
+/* قايمة الدروس */
+
+.lessons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+/* درس واحد */
+
+.lesson-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 20px;
+    min-height: 90px;
+    background: rgba(13, 43, 36, 0.5);
+    border: 1px solid rgba(214, 181, 109, 0.15);
+    border-radius: var(--radius-card);
+    backdrop-filter: blur(15px);
+    transition: var(--transition);
+}
+
+.lesson-row:hover {
+    border-color: rgba(214, 181, 109, 0.5);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+
+/* رقم الدرس */
+
+.lesson-number {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: rgba(214, 181, 109, 0.15);
+    color: var(--gold-main);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* معلومات الدرس */
+
+.lesson-row .lesson-info {
+    flex: 1;
+}
+
+.lesson-row .lesson-info span {
+    display: block;
+    font-size: 12px;
+    color: var(--gold-main);
+    margin-bottom: 5px;
+}
+
+.lesson-row .lesson-info h3 {
+    font-size: 16px;
+    margin: 0;
+}
+
+
+/* زرار المتابعة */
+
+.lesson-button-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border: none;
+    border-radius: var(--radius-btn);
+    background: linear-gradient(135deg, var(--gold-main), var(--gold-dark));
+    color: #071A16;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+    flex-shrink: 0;
+}
+
+.lesson-button-inline:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(214, 181, 109, 0.3);
+}
+
+.lesson-button-inline i {
+    font-size: 12px;
+}
+
+
+/* للموبايل */
+
+@media (max-width: 600px) {
+
+    .lesson-row {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .lesson-button-inline {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .lesson-number {
+        width: 42px;
+        height: 42px;
+        font-size: 17px;
+    }
+
+    .lesson-row .lesson-info h3 {
+        font-size: 14px;
+    }
+
+}
+
+/* =========================================================
+   فيديو الدرس
+========================================================= */
+
+.video-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    border: 1px solid rgba(214, 181, 109, 0.3);
+    background: rgba(0, 0, 0, 0.5);
+    animation: videoOpen 0.4s ease;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+}
+
+@keyframes videoOpen {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   إعدادات عامة
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    min-height: 100vh;
+
+    font-family: Arial, Tahoma, sans-serif;
+
+    background:
+        radial-gradient(circle at top right,
+            #263d68,
+            #080b12 45%,
+            #030407);
+
+    color: white;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   الخلفية
+========================= */
+
+.background {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+
+/* الدوائر */
+
+.circle {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(2px);
+
+    opacity: 0.35;
+
+    animation:
+        floating 8s infinite ease-in-out;
+}
+
+
+/* الدائرة الأولى */
+
+.circle-1 {
+
+    width: 350px;
+    height: 350px;
+
+    background: #c89b3c;
+
+    top: -120px;
+    right: -100px;
+
+}
+
+
+/* الدائرة الثانية */
+
+.circle-2 {
+
+    width: 280px;
+    height: 280px;
+
+    background: #315da8;
+
+    bottom: -100px;
+    left: -80px;
+
+    animation-delay: 2s;
+
+}
+
+
+/* الدائرة الثالثة */
+
+.circle-3 {
+
+    width: 160px;
+    height: 160px;
+
+    background: #d8b35b;
+
+    top: 40%;
+    left: 20%;
+
+    animation-delay: 4s;
+
+}
+
+
+/* حركة الخلفية */
+
+@keyframes floating {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(30px, -30px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+
+}
+
+
+/* =========================
+   الصفحة الرئيسية
+========================= */
+
+.hero {
+
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+}
+
+
+/* =========================
+   الشعار
+========================= */
+
+.logo {
+
+    width: 85px;
+    height: 85px;
+
+    margin: 0 auto 25px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 45px;
+
+    font-weight: bold;
+
+    color: #d7b25a;
+
+    border: 2px solid #d7b25a;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    box-shadow:
+        0 0 25px rgba(215, 178, 90, 0.3);
+
+    animation:
+        logoAnimation 2s ease forwards;
+
+}
+
+
+/* حركة الشعار */
+
+@keyframes logoAnimation {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(0.3) rotate(-180deg);
+
+    }
+
+    70% {
+
+        transform:
+            scale(1.1) rotate(10deg);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1) rotate(0);
+
+    }
+
+}
+
+
+/* =========================
+   النصوص
+========================= */
+
+.content {
+
+    max-width: 850px;
+
+    width: 100%;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    animation:
+        contentAnimation 1.5s ease forwards;
+
+}
+
+
+/* حركة دخول المحتوى */
+
+@keyframes contentAnimation {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(50px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* النص الصغير */
+
+.small-title {
+
+    color: #d7b25a;
+
+    font-size: 16px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 18px;
+
+}
+
+
+/* العنوان */
+
+h1 {
+
+    font-size: 48px;
+
+    line-height: 1.4;
+
+    margin-bottom: 5px;
+
+}
+
+
+/* كلمة القيصر */
+
+h1 span {
+
+    color: #d7b25a;
+
+    text-shadow:
+        0 0 20px rgba(215, 178, 90, 0.35);
+
+}
+
+
+/* المرحلة */
+
+h2 {
+
+    font-size: 27px;
+
+    color: #e7eaf0;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* الوصف */
+
+.description {
+
+    max-width: 680px;
+
+    margin: auto;
+
+    color: #aeb7c7;
+
+    font-size: 18px;
+
+    line-height: 2;
+
+}
+
+
+/* كلمة العربي أسهل */
+
+.description strong {
+
+    color: #d7b25a;
+
+}
+
+
+/* =========================
+   المدرس
+========================= */
+
+.teacher {
+
+    margin: 30px auto;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 12px 25px;
+
+    border-radius: 50px;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    border:
+        1px solid rgba(215, 178, 90, 0.3);
+
+    backdrop-filter:
+        blur(10px);
+
+}
+
+
+/* أيقونة المدرس */
+
+.teacher-icon {
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #d7b25a;
+
+    color: #111;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+}
+
+
+/* اسم المدرس */
+
+.teacher span {
+
+    display: block;
+
+    color: #9da7b8;
+
+    font-size: 12px;
+
+    text-align: right;
+
+}
+
+
+.teacher h3 {
+
+    color: white;
+
+    font-size: 19px;
+
+    margin-top: 3px;
+
+}
+
+
+/* =========================
+   زر البداية
+========================= */
+
+.start-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 16px 35px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    color: #111;
+
+    background:
+        linear-gradient(135deg,
+            #e4c56d,
+            #b98b2e);
+
+    box-shadow:
+        0 10px 30px rgba(200, 155, 60, 0.25);
+
+    transition:
+        0.3s;
+
+    text-decoration: none;
+
+    margin: 0 auto;
+
+}
+
+
+/* السهم */
+
+.start-button b {
+
+    display: inline-block;
+
+    margin-right: 10px;
+
+    transition:
+        0.3s;
+
+}
+
+
+/* Hover */
+
+.start-button:hover {
+
+    transform:
+        translateY(-4px) scale(1.03);
+
+    box-shadow:
+        0 15px 40px rgba(200, 155, 60, 0.4);
+
+}
+
+
+/* حركة السهم */
+
+.start-button:hover b {
+
+    transform:
+        translateX(-7px);
+
+}
+
+
+/* =========================
+   الموبايل
+========================= */
+
+@media (max-width: 700px) {
+
+    body {
+
+        overflow-y: auto;
+
+    }
+
+
+    .hero {
+
+        padding:
+            50px 20px;
+
+    }
+
+
+    .content {
+
+        width: 100%;
+
+    }
+
+
+    h1 {
+
+        font-size: 34px;
+
+    }
+
+
+    h2 {
+
+        font-size: 21px;
+
+    }
+
+
+    .description {
+
+        font-size: 15px;
+
+    }
+
+
+    .teacher {
+
+        padding:
+            10px 18px;
+
+    }
+
+
+    .start-button {
+
+        width: 100%;
+
+        max-width: 350px;
+
+    }
+
+}
+
+/* =========================
+   حروف القيصر في الخلفية
+========================= */
+
+.floating-letters {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 1;
+
+}
+
+
+/* شكل الحروف */
+
+.floating-letters span {
+
+    position: absolute;
+
+    color: #d7b25a;
+
+    font-weight: bold;
+
+    opacity: 0.65;
+
+    text-shadow:
+        0 0 10px rgba(215, 178, 90, 0.45),
+        0 0 25px rgba(215, 178, 90, 0.25);
+
+    animation:
+        letterFloat 8s infinite ease-in-out;
+
+}
+
+
+/* الحروف وأماكنها */
+
+.floating-letters span:nth-child(1) {
+
+    top: 12%;
+    left: 10%;
+
+    font-size: 75px;
+
+}
+
+
+.floating-letters span:nth-child(2) {
+
+    top: 35%;
+    left: 25%;
+
+    font-size: 55px;
+
+}
+
+
+.floating-letters span:nth-child(3) {
+
+    top: 20%;
+    right: 18%;
+
+    font-size: 95px;
+
+    opacity: 0.75;
+
+}
+
+
+.floating-letters span:nth-child(4) {
+
+    top: 65%;
+    left: 8%;
+
+    font-size: 65px;
+
+}
+
+
+.floating-letters span:nth-child(5) {
+
+    bottom: 12%;
+    left: 28%;
+
+    font-size: 85px;
+
+}
+
+
+.floating-letters span:nth-child(6) {
+
+    bottom: 15%;
+    right: 12%;
+
+    font-size: 70px;
+
+}
+
+
+.floating-letters span:nth-child(7) {
+
+    top: 42%;
+    right: 7%;
+
+    font-size: 55px;
+
+}
+
+
+.floating-letters span:nth-child(8) {
+
+    top: 10%;
+    left: 43%;
+
+    font-size: 50px;
+
+}
+
+
+.floating-letters span:nth-child(9) {
+
+    bottom: 8%;
+    left: 50%;
+
+    font-size: 60px;
+
+}
+
+
+.floating-letters span:nth-child(10) {
+
+    top: 55%;
+    left: 42%;
+
+    font-size: 48px;
+
+}
+
+
+.floating-letters span:nth-child(11) {
+
+    top: 32%;
+    right: 34%;
+
+    font-size: 75px;
+
+}
+
+
+.floating-letters span:nth-child(12) {
+
+    bottom: 25%;
+    right: 40%;
+
+    font-size: 55px;
+
+}
+
+
+/* =========================
+   حركة الحروف
+========================= */
+
+@keyframes letterFloat {
+
+    0% {
+
+        transform:
+            translateY(0) rotate(0deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-15px) rotate(4deg);
+
+    }
+
+    100% {
+
+        transform:
+            translateY(0) rotate(0deg);
+
+    }
+
+}
+
+/* =========================
+   إعدادات عامة
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    min-height: 100vh;
+
+    font-family: Arial, Tahoma, sans-serif;
+
+    background:
+        radial-gradient(circle at top right,
+            #263d68,
+            #080b12 45%,
+            #030407);
+
+    color: white;
+
+    /* السماح بالـ Scroll في الصفحات الطويلة */
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* =========================================================
+   إعدادات عامة
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: Tahoma, Arial, sans-serif;
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(circle at 50% 20%,
+            rgba(15, 100, 75, 0.22),
+            transparent 45%),
+        linear-gradient(135deg,
+            #001b15,
+            #00352a,
+            #001d17);
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   صفحة اختيار الدرس
+========================================================= */
+
+.choose-page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 25px;
+
+    background:
+        radial-gradient(circle at 50% 50%,
+            rgba(20, 120, 80, 0.12),
+            transparent 55%),
+        #00271f;
+}
+
+
+/* =========================================================
+   الحاوية الرئيسية
+========================================================= */
+
+.choose-container {
+    width: 100%;
+    max-width: 2000px;
+
+    min-height: 490px;
+
+    padding: 35px 45px 40px;
+
+    border: 1px solid rgba(210, 166, 61, 0.35);
+
+    border-radius: 35px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(0, 48, 37, 0.65),
+            rgba(0, 28, 22, 0.85));
+
+    box-shadow:
+        inset 0 0 50px rgba(0, 0, 0, 0.25),
+        0 0 40px rgba(0, 0, 0, 0.2);
+
+    position: relative;
+}
+
+
+/* =========================================================
+   العنوان
+========================================================= */
+
+.choose-header {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: flex-start;
+
+    align-items: center;
+
+    margin-bottom: 30px;
+
+    padding-right: 10px;
+}
+
+
+/* العنوان الرئيسي */
+
+.choose-header h1 {
+    position: relative;
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.25);
+
+    padding-right: 75px;
+}
+
+
+/* علامة صغيرة ذهبية بجانب العنوان */
+
+.choose-header h1::before {
+    content: "🎓";
+
+    position: absolute;
+
+    right: 0;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 43px;
+
+    filter:
+        sepia(1) saturate(3) hue-rotate(350deg);
+
+}
+
+
+/* الخط الذهبي بجانب العنوان */
+
+.choose-header h1::after {
+    content: "";
+
+    position: absolute;
+
+    right: 190px;
+
+    top: 50%;
+
+    width: 120px;
+
+    height: 2px;
+
+    transform: translateY(-50%);
+
+    background:
+        linear-gradient(to left,
+            transparent,
+            #d8a93e,
+            transparent);
+
+    box-shadow:
+        0 0 10px #d8a93e;
+}
+
+
+/* النص الصغير تحت العنوان */
+
+.choose-header p {
+    display: none;
+}
+
+
+/* =========================================================
+   منطقة الكروت
+========================================================= */
+
+.choices {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 35px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   الكارت
+========================================================= */
+
+.choice-card {
+    min-height: 320px;
+
+    padding: 30px 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    border: 2px solid #cfa33a;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(0, 55, 43, 0.9),
+            rgba(0, 35, 27, 0.95));
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+/* =========================================================
+   التوهج أعلى وأسفل الكارت
+========================================================= */
+
+.choice-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: -2px;
+
+    left: 15%;
+
+    width: 70%;
+
+    height: 3px;
+
+    background: #f3c44d;
+
+    box-shadow:
+        0 0 8px #f3c44d,
+        0 0 20px #f3c44d;
+
+    border-radius: 50%;
+}
+
+
+.choice-card::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: -2px;
+
+    left: 15%;
+
+    width: 70%;
+
+    height: 3px;
+
+    background: #f3c44d;
+
+    box-shadow:
+        0 0 8px #f3c44d,
+        0 0 20px #f3c44d;
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   حركة الكارت عند المرور
+========================================================= */
+
+.choice-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #f4c64e;
+
+    box-shadow:
+        0 0 12px rgba(238, 188, 67, 0.45),
+        0 0 35px rgba(238, 188, 67, 0.18),
+        inset 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================================================
+   دائرة الأيقونة
+========================================================= */
+
+.choice-icon {
+    width: 120px;
+
+    height: 120px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 22px;
+
+    border: 2px solid #d8a83e;
+
+    background:
+        radial-gradient(circle,
+            rgba(15, 85, 63, 0.75),
+            rgba(0, 30, 23, 0.95));
+
+    box-shadow:
+        inset 0 0 15px rgba(0, 0, 0, 0.35),
+        0 0 10px rgba(218, 169, 58, 0.18);
+
+    position: relative;
+}
+
+
+/* توهج أعلى الدائرة */
+
+.choice-icon::before {
+    content: "";
+
+    position: absolute;
+
+    top: 8px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 24px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    opacity: 0.65;
+
+    filter: blur(5px);
+
+    box-shadow:
+        0 0 12px #d9ad4b;
+}
+
+
+/* الأيقونة */
+
+.choice-icon i {
+    font-size: 55px;
+
+    color: #e8bd55;
+
+    text-shadow:
+        0 0 8px rgba(232, 189, 85, 0.35);
+}
+
+
+/* =========================================================
+   عنوان الكارت
+========================================================= */
+
+.choice-card h2 {
+    font-size: 30px;
+
+    font-weight: bold;
+
+    color: #ffffff;
+
+    margin-bottom: 22px;
+
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================================================
+   وصف الكارت
+========================================================= */
+
+.choice-card p {
+    display: none;
+}
+
+
+/* =========================================================
+   زر دخول
+========================================================= */
+
+.choice-card span {
+    min-width: 195px;
+
+    height: 60px;
+
+    padding: 0 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 35px;
+
+    border: 2px solid #d5a73d;
+
+    border-radius: 40px;
+
+    color: #e6bb51;
+
+    font-size: 23px;
+
+    font-weight: bold;
+
+    background:
+        rgba(0, 35, 27, 0.75);
+
+    box-shadow:
+        inset 0 0 15px rgba(0, 0, 0, 0.15);
+
+    transition: 0.3s ease;
+}
+
+
+/* سهم الدخول */
+
+.choice-card span i {
+    font-size: 25px;
+
+    color: #e6bb51;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* حركة الزر */
+
+.choice-card:hover span {
+    background:
+        rgba(210, 166, 61, 0.08);
+
+    box-shadow:
+        0 0 15px rgba(220, 173, 61, 0.2);
+}
+
+
+.choice-card:hover span i {
+    transform: translateX(-5px);
+}
+
+
+/* =========================================================
+   اللوجو
+========================================================= */
+
+.choose-logo {
+    display: none;
+}
+
+
+/* =========================================================
+   الأجهزة المتوسطة
+========================================================= */
+
+@media (max-width: 1300px) {
+
+    .choose-container {
+        padding: 30px;
+    }
+
+    .choices {
+        gap: 20px;
+    }
+
+    .choice-card {
+        min-height: 300px;
+    }
+
+    .choice-icon {
+        width: 105px;
+        height: 105px;
+    }
+
+    .choice-icon i {
+        font-size: 48px;
+    }
+
+    .choice-card h2 {
+        font-size: 26px;
+    }
+
+    .choice-card span {
+        min-width: 170px;
+        height: 55px;
+        font-size: 21px;
+    }
+
+}
+
+
+/* =========================================================
+   التابلت
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .choose-page {
+        padding: 25px;
+    }
+
+    .choose-container {
+        min-height: auto;
+    }
+
+    .choices {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 25px;
+    }
+
+    .choose-header {
+        justify-content: center;
+    }
+
+    .choose-header h1 {
+        font-size: 28px;
+    }
+
+}
+
+
+/* =========================================================
+   الموبايل
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .choose-page {
+        padding: 15px;
+    }
+
+    .choose-container {
+        padding: 25px 15px;
+
+        border-radius: 25px;
+    }
+
+    .choose-header {
+        margin-bottom: 25px;
+    }
+
+    .choose-header h1 {
+        font-size: 23px;
+
+        padding-right: 50px;
+    }
+
+    .choose-header h1::before {
+        font-size: 32px;
+    }
+
+    .choose-header h1::after {
+        display: none;
+    }
+
+    .choices {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .choice-card {
+        min-height: 280px;
+    }
+
+    .choice-icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .choice-icon i {
+        font-size: 45px;
+    }
+
+    .choice-card h2 {
+        font-size: 25px;
+    }
+
+    .choice-card span {
+        min-width: 165px;
+
+        height: 52px;
+
+        font-size: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   شاشات صغيرة جدًا
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .choose-card {
+        min-height: 260px;
+    }
+
+    .choice-card h2 {
+        font-size: 22px;
+    }
+
+}
+
+/* =========================================================
+   تعديل مكان عنوان اختيار النظام
+========================================================= */
+
+.choose-header {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-bottom: 45px;
+
+    padding: 0;
+}
+
+
+/* العنوان + القبعة في المنتصف */
+
+.choose-header h1 {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    padding: 0;
+
+    margin: 0;
+
+    font-size: 32px;
+
+    text-align: center;
+}
+
+
+/* القبعة */
+
+.choose-header h1::before {
+    content: "🎓";
+
+    position: static;
+
+    transform: none;
+
+    font-size: 42px;
+
+    filter:
+        sepia(1) saturate(3) hue-rotate(350deg);
+
+    flex-shrink: 0;
+}
+
+
+/* إلغاء الخط القديم */
+
+.choose-header h1::after {
+    display: none;
+}
+
+
+/* =========================================================
+   جعل البطاقتين في المنتصف
+   مع الحفاظ على شكل البطاقات
+========================================================= */
+
+.choices {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 350px);
+
+    justify-content: center;
+
+    align-items: stretch;
+
+    gap: 35px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   الحفاظ على شكل البطاقة
+========================================================= */
+
+.choice-card {
+    width: 350px;
+
+    min-height: 320px;
+
+    margin: 0;
+
+    justify-self: center;
+}
+
+
+/* =========================================================
+   الموبايل
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .choose-header {
+        margin-bottom: 30px;
+    }
+
+    .choose-header h1 {
+        font-size: 27px;
+    }
+
+    .choose-header h1::before {
+        font-size: 36px;
+    }
+
+    .choices {
+        grid-template-columns: 1fr;
+
+        justify-items: center;
+
+        gap: 25px;
+    }
+
+    .choice-card {
+        width: 350px;
+
+        max-width: 100%;
+    }
+}
+
+
+/* =========================================================
+   شاشات الموبايل الصغيرة
+========================================================= */
+
+@media (max-width: 450px) {
+
+    .choose-header h1 {
+        font-size: 22px;
+
+        gap: 10px;
+    }
+
+    .choose-header h1::before {
+        font-size: 30px;
+    }
+
+    .choice-card {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   تصميم كروت مواد الثانوية العامة
+   نفس شكل التصميم المطلوب
+========================================================= */
+
+.subjects-section {
+    width: 100%;
+    max-width: 2000px;
+    margin: 50px auto;
+    padding: 35px 45px 45px;
+
+    border: 1px solid rgba(210, 166, 61, 0.35);
+    border-radius: 35px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(0, 48, 37, 0.65),
+            rgba(0, 28, 22, 0.85));
+
+    box-shadow:
+        inset 0 0 50px rgba(0, 0, 0, 0.25);
+
+    position: relative;
+}
+
+
+/* =========================================================
+   عنوان اختر درسك الآن
+========================================================= */
+
+.subjects-header {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    margin-bottom: 40px;
+
+    position: relative;
+}
+
+
+/* النص */
+
+.subjects-header h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 34px;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+
+/* القبعة */
+
+.subjects-header>i {
+    margin-right: 18px;
+
+    font-size: 45px;
+
+    color: #e5b84b;
+
+    filter:
+        drop-shadow(0 0 8px rgba(229, 184, 75, 0.4));
+}
+
+
+/* الوصف */
+
+.subjects-header p {
+    display: none;
+}
+
+
+/* =========================================================
+   شبكة الكروت
+========================================================= */
+
+.subjects-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 35px;
+
+    align-items: stretch;
+
+    justify-content: center;
+}
+
+
+/* =========================================================
+   الكارت
+========================================================= */
+
+.subject-card {
+    min-height: 320px;
+
+    padding: 30px 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border: 2px solid #d4a63d;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(0, 55, 43, 0.9),
+            rgba(0, 35, 27, 0.95));
+
+    color: #ffffff;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+/* =========================================================
+   التوهج الذهبي أعلى الكارت
+========================================================= */
+
+.subject-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: -2px;
+
+    left: 15%;
+
+    width: 70%;
+
+    height: 3px;
+
+    background: #f3c44d;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px #f3c44d,
+        0 0 20px #f3c44d;
+}
+
+
+/* =========================================================
+   التوهج الذهبي أسفل الكارت
+========================================================= */
+
+.subject-card::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: -2px;
+
+    left: 15%;
+
+    width: 70%;
+
+    height: 3px;
+
+    background: #f3c44d;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px #f3c44d,
+        0 0 20px #f3c44d;
+}
+
+
+/* =========================================================
+   حركة الكارت
+========================================================= */
+
+.subject-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #f4c64e;
+
+    box-shadow:
+        0 0 12px rgba(238, 188, 67, 0.45),
+        0 0 35px rgba(238, 188, 67, 0.18),
+        inset 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================================================
+   دائرة الأيقونة
+========================================================= */
+
+.subject-icon {
+    width: 120px;
+
+    height: 120px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 22px;
+
+    border: 2px solid #d8a83e;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(15, 85, 63, 0.75),
+            rgba(0, 30, 23, 0.95));
+
+    box-shadow:
+        inset 0 0 15px rgba(0, 0, 0, 0.35),
+        0 0 10px rgba(218, 169, 58, 0.18);
+
+    position: relative;
+}
+
+
+/* التوهج الصغير أعلى الدائرة */
+
+.subject-icon::before {
+    content: "";
+
+    position: absolute;
+
+    top: 8px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 24px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    opacity: 0.65;
+
+    filter: blur(5px);
+
+    box-shadow:
+        0 0 12px #d9ad4b;
+}
+
+
+/* الأيقونة */
+
+.subject-icon i {
+    font-size: 55px;
+
+    color: #e8bd55;
+
+    text-shadow:
+        0 0 8px rgba(232, 189, 85, 0.35);
+}
+
+
+/* =========================================================
+   اسم المادة
+========================================================= */
+
+.subject-card h3 {
+    margin: 0 0 22px;
+
+    color: #ffffff;
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================================================
+   وصف المادة
+========================================================= */
+
+.subject-card>p {
+    display: none;
+}
+
+
+/* =========================================================
+   زر دخول
+========================================================= */
+
+.subject-card .coming-soon {
+    min-width: 195px;
+
+    height: 60px;
+
+    padding: 0 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 35px;
+
+    border: 2px solid #d5a73d;
+
+    border-radius: 40px;
+
+    color: #e6bb51;
+
+    font-size: 23px;
+
+    font-weight: bold;
+
+    background:
+        rgba(0, 35, 27, 0.75);
+
+    box-shadow:
+        inset 0 0 15px rgba(0, 0, 0, 0.15);
+
+    transition: 0.3s ease;
+}
+
+
+/* نخفي كلمة قريبًا ونظهر دخول */
+
+.subject-card .coming-soon {
+    font-size: 0;
+}
+
+
+/* كلمة دخول */
+
+.subject-card .coming-soon::before {
+    content: "دخول";
+
+    font-size: 23px;
+}
+
+
+/* السهم */
+
+.subject-card .coming-soon::after {
+    content: "←";
+
+    font-size: 30px;
+
+    font-weight: bold;
+}
+
+
+/* حركة زر الدخول */
+
+.subject-card:hover .coming-soon {
+    background:
+        rgba(210, 166, 61, 0.08);
+
+    box-shadow:
+        0 0 15px rgba(220, 173, 61, 0.2);
+}
+
+
+/* =========================================================
+   الشاشات المتوسطة
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .subjects-section {
+        padding: 30px;
+    }
+
+    .subjects-grid {
+        gap: 22px;
+    }
+
+    .subject-card {
+        min-height: 300px;
+    }
+
+    .subject-icon {
+        width: 105px;
+        height: 105px;
+    }
+
+    .subject-icon i {
+        font-size: 48px;
+    }
+
+    .subject-card h3 {
+        font-size: 26px;
+    }
+
+}
+
+
+/* =========================================================
+   التابلت
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .subjects-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 25px;
+    }
+
+}
+
+
+/* =========================================================
+   الموبايل
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .subjects-section {
+        padding: 25px 15px;
+
+        border-radius: 25px;
+    }
+
+    .subjects-header h2 {
+        font-size: 27px;
+    }
+
+    .subjects-header>i {
+        font-size: 35px;
+
+        margin-right: 12px;
+    }
+
+    .subjects-grid {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .subject-card {
+        min-height: 290px;
+    }
+
+    .subject-icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .subject-icon i {
+        font-size: 45px;
+    }
+
+    .subject-card h3 {
+        font-size: 25px;
+    }
+
+    .subject-card .coming-soon {
+        min-width: 170px;
+
+        height: 55px;
+    }
+
+}
+
+/* =========================================
+   الوحدات وأقسام المنصة
+========================================= */
+
+.platform-sections {
+    margin-top: 50px;
+}
+
+.platform-sections h2 {
+    color: #ffffff;
+    font-size: 38px;
+    margin-bottom: 30px;
+    text-align: right;
+}
+
+.sections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+
+/* =========================================
+   الكروت
+========================================= */
+
+.section-card {
+
+    position: relative;
+
+    background:
+        linear-gradient(145deg,
+            rgba(0, 55, 43, .95),
+            rgba(0, 35, 27, .95));
+
+    border: 1px solid rgba(212, 166, 61, .35);
+
+    border-radius: 25px;
+
+    min-height: 180px;
+
+    padding: 30px;
+
+    text-decoration: none;
+
+    color: white;
+
+    transition: .4s;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+
+/* خط ذهبي فوق */
+
+.section-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 20%;
+
+    width: 60%;
+
+    height: 3px;
+
+    background: #d4a63d;
+
+    box-shadow:
+        0 0 10px #d4a63d,
+        0 0 20px #d4a63d;
+}
+
+
+/* حركة */
+
+.section-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color: #f3c44d;
+
+    box-shadow:
+        0 0 25px rgba(212, 166, 61, .25);
+}
+
+
+/* =========================================
+   الأيقونة
+========================================= */
+
+.card-icon {
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        rgba(212, 166, 61, .15);
+
+    margin-bottom: 20px;
+}
+
+.card-icon i {
+
+    color: #d4a63d;
+
+    font-size: 32px;
+}
+
+
+/* =========================================
+   العنوان
+========================================= */
+
+.section-card h3 {
+
+    font-size: 24px;
+
+    margin-bottom: 10px;
+
+    color: #ffffff;
+}
+
+
+/* =========================================
+   الوصف
+========================================= */
+
+.section-card p {
+
+    color: #c7d3ce;
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   السهم
+========================================= */
+
+.card-arrow {
+
+    position: absolute;
+
+    left: 20px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #d4a63d;
+
+    font-size: 40px;
+
+    transition: .3s;
+}
+
+.section-card:hover .card-arrow {
+
+    left: 15px;
+}
+
+
+/* =========================================
+   الوحدات الدراسية
+========================================= */
+
+.grade-card .card-icon {
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 15px;
+}
+
+.grade-card .card-icon i {
+
+    font-size: 28px;
+}
+
+
+/* =========================================
+   الكورسات والاختبارات والدرجات
+========================================= */
+
+.section-card:nth-child(1) .card-icon {
+    background: rgba(212, 166, 61, .18);
+}
+
+.section-card:nth-child(2) .card-icon {
+    background: rgba(212, 166, 61, .18);
+}
+
+.section-card:nth-child(3) .card-icon {
+    background: rgba(212, 166, 61, .18);
+}
+
+
+/* =========================================
+   الموبايل
+========================================= */
+
+@media(max-width:768px) {
+
+    .platform-sections h2 {
+
+        font-size: 30px;
+    }
+
+    .sections-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .section-card {
+
+        min-height: 160px;
+    }
+}
+
+/* =========================================================
+   الثانوية العامة
+   التصميم العام
+========================================================= */
+
+.home-page {
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background:
+        radial-gradient(circle at top right,
+            rgba(35, 91, 69, 0.25),
+            transparent 35%),
+        radial-gradient(circle at bottom left,
+            rgba(12, 70, 53, 0.20),
+            transparent 40%),
+        #002d23;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   المحتوى
+========================================================= */
+
+.home-content {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding:
+        35px 25px 120px;
+}
+
+
+/* =========================================================
+   الترحيب
+========================================================= */
+
+.welcome-section {
+    text-align: right;
+
+    margin-bottom: 30px;
+}
+
+.welcome-section h2 {
+    color: #ffffff;
+
+    font-size: 32px;
+
+    margin-bottom: 10px;
+}
+
+.welcome-section p {
+    color: #d7b25a;
+
+    font-size: 16px;
+}
+
+.progress-line {
+    width: 120px;
+
+    height: 3px;
+
+    margin-top: 12px;
+
+    margin-right: 0;
+
+    background: #d7b25a;
+
+    box-shadow:
+        0 0 8px #d7b25a;
+}
+
+
+/* =========================================================
+   الكارت التحفيزي
+========================================================= */
+
+.quote-card {
+    width: 100%;
+
+    min-height: 140px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 30px 40px;
+
+    margin-bottom: 45px;
+
+    border: 1px solid rgba(215, 178, 90, 0.35);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(73, 82, 48, 0.65),
+            rgba(0, 46, 36, 0.85));
+
+    box-shadow:
+        inset 0 0 35px rgba(0, 0, 0, 0.18);
+}
+
+.quote-text {
+    text-align: center;
+
+    flex: 1;
+}
+
+.quote-text h3 {
+    font-size: 25px;
+
+    margin-bottom: 8px;
+}
+
+.quote-text p {
+    color: #d7b25a;
+
+    font-size: 17px;
+
+    margin-bottom: 8px;
+}
+
+.quote-text small {
+    color: #9fa9a5;
+}
+
+.quote-icon {
+    width: 70px;
+
+    font-size: 50px;
+
+    color: #e0b84d;
+
+    text-align: center;
+
+    filter:
+        drop-shadow(0 0 8px rgba(224, 184, 77, 0.35));
+}
+
+
+/* =========================================================
+   قسم المواد
+========================================================= */
+
+.subjects-section {
+    width: 100%;
+
+    margin: 0 auto 55px;
+
+    padding: 35px 40px 45px;
+
+    border: 1px solid rgba(215, 178, 90, 0.32);
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(0, 47, 36, 0.72),
+            rgba(0, 34, 26, 0.90));
+
+    box-shadow:
+        inset 0 0 50px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =========================================================
+   عنوان اختر درسك الآن
+========================================================= */
+
+.subjects-header {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 40px;
+
+    text-align: center;
+}
+
+.subjects-header>div {
+    order: 1;
+}
+
+.subjects-header>i {
+    order: 2;
+
+    font-size: 42px;
+
+    color: #e4b84f;
+
+    filter:
+        drop-shadow(0 0 8px rgba(228, 184, 79, 0.4));
+}
+
+.subjects-header h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 34px;
+
+    font-weight: bold;
+}
+
+.subjects-header p {
+    display: none;
+}
+
+
+/* =========================================================
+   شبكة المواد
+========================================================= */
+
+.subjects-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 34px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   كارت المادة
+========================================================= */
+
+.subject-card {
+    position: relative;
+
+    min-height: 320px;
+
+    padding: 30px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    border: 2px solid #d7a940;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(0, 57, 44, 0.92),
+            rgba(0, 35, 27, 0.98));
+
+    color: #ffffff;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+/* الخط المضيء أعلى وأسفل */
+
+.subject-card::before,
+.subject-card::after {
+    content: "";
+
+    position: absolute;
+
+    left: 15%;
+
+    width: 70%;
+
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: #f2c34e;
+
+    box-shadow:
+        0 0 8px #f2c34e,
+        0 0 18px #f2c34e;
+}
+
+.subject-card::before {
+    top: -2px;
+}
+
+.subject-card::after {
+    bottom: -2px;
+}
+
+
+/* Hover */
+
+.subject-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #f2c34e;
+
+    box-shadow:
+        0 0 15px rgba(242, 195, 78, 0.35),
+
+        0 0 35px rgba(242, 195, 78, 0.12);
+}
+
+
+/* =========================================================
+   دائرة أيقونة المادة
+========================================================= */
+
+.subject-icon {
+    width: 120px;
+
+    height: 120px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 22px;
+
+    position: relative;
+
+    border: 2px solid #d7a940;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(20, 90, 67, 0.75),
+            rgba(0, 31, 23, 0.98));
+
+    box-shadow:
+        inset 0 0 18px rgba(0, 0, 0, 0.35),
+
+        0 0 10px rgba(215, 169, 64, 0.18);
+}
+
+
+/* اللمعة أعلى الدائرة */
+
+.subject-icon::before {
+    content: "";
+
+    position: absolute;
+
+    top: 8px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 24px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    opacity: 0.65;
+
+    filter: blur(5px);
+
+    box-shadow:
+        0 0 12px #e0b34c;
+}
+
+
+/* الأيقونة */
+
+.subject-icon i {
+    font-size: 55px;
+
+    color: #e8bb4d;
+
+    text-shadow:
+        0 0 10px rgba(232, 187, 77, 0.35);
+}
+
+
+/* اسم المادة */
+
+.subject-card h3 {
+    margin: 0 0 22px;
+
+    color: #ffffff;
+
+    font-size: 30px;
+
+    font-weight: bold;
+}
+
+
+/* نخفي الوصف */
+
+.subject-card>p {
+    display: none;
+}
+
+
+/* =========================================================
+   زر دخول
+========================================================= */
+
+.subject-card .coming-soon {
+    width: 195px;
+
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 35px;
+
+    border: 2px solid #d7a940;
+
+    border-radius: 40px;
+
+    background:
+        rgba(0, 35, 27, 0.80);
+
+    color: #e6b94e;
+
+    font-size: 0;
+
+    font-weight: bold;
+
+    transition: 0.3s ease;
+}
+
+
+/* كلمة دخول */
+
+.subject-card .coming-soon::before {
+    content: "دخول";
+
+    font-size: 23px;
+}
+
+
+/* السهم */
+
+.subject-card .coming-soon::after {
+    content: "←";
+
+    font-size: 30px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   أقسام المنصة
+========================================================= */
+
+.platform-sections {
+    width: 100%;
+
+    margin-bottom: 55px;
+}
+
+.platform-sections>h2 {
+    margin-bottom: 25px;
+
+    color: #ffffff;
+
+    font-size: 32px;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   كروت الكورسات والاختبارات والدرجات
+========================================================= */
+
+.sections-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+/* الكارت */
+
+.section-card {
+    min-height: 190px;
+
+    position: relative;
+
+    padding: 28px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    border: 2px solid #d7a940;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(0, 57, 44, 0.92),
+            rgba(0, 35, 27, 0.98));
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* الخط المضيء */
+
+.section-card::before,
+.section-card::after {
+    content: "";
+
+    position: absolute;
+
+    left: 18%;
+
+    width: 64%;
+
+    height: 3px;
+
+    background: #f2c34e;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px #f2c34e,
+        0 0 18px #f2c34e;
+}
+
+.section-card::before {
+    top: -2px;
+}
+
+.section-card::after {
+    bottom: -2px;
+}
+
+
+/* Hover */
+
+.section-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 0 18px rgba(242, 195, 78, 0.30);
+}
+
+
+/* =========================================================
+   أيقونة أقسام المنصة
+========================================================= */
+
+.card-icon {
+    width: 75px;
+
+    height: 75px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border: 2px solid #d7a940;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(20, 90, 67, 0.75),
+            rgba(0, 31, 23, 0.98));
+
+    box-shadow:
+        0 0 10px rgba(215, 169, 64, 0.16);
+}
+
+.card-icon i {
+    font-size: 30px;
+
+    color: #e8bb4d;
+}
+
+
+/* عنوان الكارت */
+
+.section-card h3 {
+    margin: 0 0 8px;
+
+    color: #ffffff;
+
+    font-size: 24px;
+}
+
+
+/* الوصف */
+
+.section-card p {
+    margin: 0;
+
+    color: #c1c8c4;
+
+    font-size: 15px;
+}
+
+
+/* السهم */
+
+.card-arrow {
+    position: absolute;
+
+    left: 22px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: #e5b84d;
+
+    font-size: 38px;
+}
+
+
+/* =========================================================
+   الكورسات المتاحة
+========================================================= */
+
+.available-courses {
+    width: 100%;
+
+    margin-bottom: 40px;
+}
+
+.available-courses>h2 {
+    color: #ffffff;
+
+    font-size: 32px;
+
+    margin-bottom: 25px;
+}
+
+
+/* كارت الكورس */
+
+.course-card {
+    width: 100%;
+
+    min-height: 150px;
+
+    padding: 25px 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border: 2px solid #d7a940;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(0, 57, 44, 0.92),
+            rgba(0, 35, 27, 0.98));
+
+    box-shadow:
+        0 0 12px rgba(215, 169, 64, 0.08);
+}
+
+
+/* توهج الكورس */
+
+.course-card::before,
+.course-card::after {
+    content: "";
+
+    position: absolute;
+
+    left: 20%;
+
+    width: 60%;
+
+    height: 3px;
+
+    background: #f2c34e;
+
+    box-shadow:
+        0 0 8px #f2c34e,
+        0 0 18px #f2c34e;
+}
+
+.course-card::before {
+    top: -2px;
+}
+
+.course-card::after {
+    bottom: -2px;
+}
+
+
+/* أيقونة الكورس */
+
+.course-icon {
+    width: 85px;
+
+    height: 85px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 2px solid #d7a940;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(20, 90, 67, 0.75),
+            rgba(0, 31, 23, 0.98));
+}
+
+.course-icon i {
+    color: #e8bb4d;
+
+    font-size: 35px;
+}
+
+
+/* معلومات الكورس */
+
+.course-info {
+    flex: 1;
+}
+
+.course-info h3 {
+    color: #ffffff;
+
+    font-size: 25px;
+
+    margin-bottom: 6px;
+}
+
+.course-info p {
+    color: #e4b84f;
+
+    font-size: 17px;
+
+    margin-bottom: 5px;
+}
+
+.course-info small {
+    color: #aeb7b2;
+
+    font-size: 14px;
+}
+
+
+/* زر دخول الكورس */
+
+.course-card button {
+    min-width: 170px;
+
+    height: 55px;
+
+    padding: 0 22px;
+
+    border: 2px solid #d7a940;
+
+    border-radius: 35px;
+
+    background:
+        rgba(0, 35, 27, 0.80);
+
+    color: #e6b94e;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.course-card button i {
+    margin-right: 10px;
+}
+
+.course-card button:hover {
+    background:
+        rgba(215, 169, 64, 0.10);
+
+    box-shadow:
+        0 0 15px rgba(215, 169, 64, 0.25);
+}
+
+
+/* =========================================================
+   القائمة السفلية
+========================================================= */
+
+.bottom-navigation {
+    position: fixed;
+
+    bottom: 0;
+
+    right: 0;
+
+    left: 0;
+
+    height: 78px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 150px;
+
+    z-index: 1000;
+
+    background:
+        rgba(0, 30, 23, 0.96);
+
+    border-top:
+        1px solid rgba(215, 178, 90, 0.25);
+
+    backdrop-filter: blur(12px);
+}
+
+.nav-item {
+    min-width: 80px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color: #7f8c87;
+
+    text-decoration: none;
+
+    transition: 0.3s ease;
+}
+
+.nav-item i {
+    font-size: 24px;
+}
+
+.nav-item span {
+    font-size: 13px;
+}
+
+.nav-item.active,
+.nav-item:hover {
+    color: #e4b84f;
+}
+
+
+/* =========================================================
+   Responsive
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .subjects-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .sections-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .home-content {
+        padding:
+            25px 15px 110px;
+    }
+
+    .subjects-section {
+        padding:
+            30px 20px 35px;
+    }
+
+    .subjects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sections-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quote-card {
+        padding: 25px;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .quote-icon {
+        order: -1;
+    }
+
+    .course-card {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .course-info {
+        flex: none;
+    }
+
+    .course-card button {
+        width: 100%;
+    }
+
+    .bottom-navigation {
+        gap: 60px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .welcome-section h2 {
+        font-size: 26px;
+    }
+
+    .subjects-header h2 {
+        font-size: 27px;
+    }
+
+    .subjects-header>i {
+        font-size: 34px;
+    }
+
+    .subject-card {
+        min-height: 300px;
+    }
+
+    .subject-icon {
+        width: 105px;
+        height: 105px;
+    }
+
+    .subject-icon i {
+        font-size: 48px;
+    }
+
+    .subject-card h3 {
+        font-size: 27px;
+    }
+
+    .subject-card .coming-soon {
+        width: 180px;
+        height: 55px;
+    }
+
+    .platform-sections>h2,
+    .available-courses>h2 {
+        font-size: 27px;
+    }
+
+    .bottom-navigation {
+        gap: 35px;
+    }
+}
+
+/* =========================================================
+   شبكة المواد - 5 كروت
+========================================================= */
+
+.subjects-grid-5 {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+}
+
+
+/* =========================================================
+   كارت المادة - الرابط
+========================================================= */
+
+a.subject-card {
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   الوسائط - 5 كروت
+========================================================= */
+
+@media (max-width: 1400px) {
+
+    .subjects-grid-5 {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    .subjects-grid-5 {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+}
+
+@media (max-width: 900px) {
+
+    .subjects-grid-5 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .subjects-grid-5 {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+}
+
+/* =========================================================
+   كروت وحدات النحو (7 كروت)
+========================================================= */
+
+.choices {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.choice-card {
+    min-height: 280px;
+    padding: 30px 22px;
+}
+
+.choice-icon {
+    width: 90px;
+    height: 90px;
+}
+
+.choice-icon i {
+    font-size: 42px;
+}
+
+.choice-card h2 {
+    font-size: 22px;
+}
+
+.choice-card span {
+    min-width: 150px;
+    height: 50px;
+    font-size: 18px;
+}
+
+
+@media (max-width: 900px) {
+
+    .choices {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    .choice-card {
+        min-height: 250px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .choices {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .choice-card {
+        min-height: 230px;
+    }
+
+    .choice-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .choice-icon i {
+        font-size: 36px;
+    }
+
+    .choice-card h2 {
+        font-size: 20px;
+    }
+
+}
+
+/* =========================================================
+   دروس الوحدة (details بدون JavaScript)
+========================================================= */
+
+.lesson-details {
+    width: 100%;
+}
+
+.lesson-details summary {
+    list-style: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.lesson-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.lesson-details summary::marker {
+    display: none;
+}
+
+/* منع الضغط على الزرار جوه summary */
+.lesson-details summary .lesson-button-inline {
+    pointer-events: none;
+    user-select: none;
+}
+
+/* شكل الفيديو */
+.lesson-details .video-container {
+    margin-top: 10px;
+}
+
+/* لما الدرس يفتح، الزرار يبان مفعّل */
+.lesson-details[open] summary .lesson-button-inline {
+    background: rgba(214, 181, 109, 0.25);
+    box-shadow: 0 0 15px rgba(214, 181, 109, 0.3);
+}
+
+
+/* =========================================================
+   زرار تحميل ملف PDF
+========================================================= */
+
+.pdf-container {
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+.pdf-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 14px 28px;
+
+    border: 2px solid #d6b56d;
+    border-radius: 14px;
+
+    background: rgba(13, 43, 36, 0.6);
+
+    color: #d6b56d;
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    transition: 0.3s ease;
+
+    box-shadow: 0 0 10px rgba(214, 181, 109, 0.1);
+}
+
+.pdf-button i {
+    font-size: 20px;
+    color: #e05a5a;
+}
+
+.pdf-button:hover {
+    background: rgba(214, 181, 109, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 0 18px rgba(214, 181, 109, 0.3);
+}
+
+.pdf-button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+
+/* للموبايل */
+@media (max-width: 600px) {
+
+    .pdf-button {
+        width: 100%;
+        padding: 12px 18px;
+        font-size: 14px;
+    }
+
+}
+
+/* =========================================================
+   ترتيب أيقونات السوشيال ميديا
+========================================================= */
+
+.social-wrapper.open .social-whatsapp {
+    top: 60px;
+    transition-delay: 0s;
+}
+
+.social-wrapper.open .social-tiktok {
+    top: 112px;
+    transition-delay: 0.05s;
+}
+
+.social-wrapper.open .social-facebook {
+    top: 164px;
+    transition-delay: 0.1s;
+}
+
+.social-wrapper.open .social-youtube {
+    top: 216px;
+    transition-delay: 0.15s;
+}
+
+.social-wrapper.open .social-email {
+    top: 268px;
+    transition-delay: 0.2s;
+}
+
+.social-wrapper.open .social-phone {
+    top: 320px;
+    transition-delay: 0.25s;
+}
+
+/* إظهار الأيقونات */
+.social-wrapper.open .social-item {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+/* =========================================================
+   صفحة اختيار النظام التعليمي
+========================================================= */
+
+.choose-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    background:
+        radial-gradient(circle at 50% 50%, rgba(20, 120, 80, 0.12), transparent 55%),
+        #00271f;
+    position: relative;
+}
+
+
+/* =========================================================
+   الحاوية الرئيسية
+========================================================= */
+
+.choose-container {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    padding: 40px 40px 50px;
+
+    border: 1px solid rgba(210, 166, 61, 0.35);
+    border-radius: 35px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(0, 48, 37, 0.65),
+            rgba(0, 28, 22, 0.85));
+
+    box-shadow:
+        inset 0 0 50px rgba(0, 0, 0, 0.25),
+        0 0 40px rgba(0, 0, 0, 0.2);
+
+    position: relative;
+}
+
+
+/* =========================================================
+   العنوان
+========================================================= */
+
+.choose-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 45px;
+    padding: 0;
+    text-align: center;
+}
+
+.choose-header h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+
+    padding: 0;
+    margin: 0;
+
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffffff;
+
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+}
+
+.choose-header h1::before {
+    content: "🎓";
+    position: static;
+    transform: none;
+    font-size: 42px;
+    filter: sepia(1) saturate(3) hue-rotate(350deg);
+    flex-shrink: 0;
+}
+
+.choose-header h1::after {
+    display: none;
+}
+
+.choose-header p {
+    display: none;
+}
+
+
+/* =========================================================
+   كروت الاختيار - في النص
+========================================================= */
+
+.choices {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(2, 350px);
+
+    justify-content: center;
+    align-items: stretch;
+
+    gap: 35px;
+
+    margin: 0 auto;
+}
+
+.choice-card {
+    width: 350px;
+    min-height: 320px;
+
+    padding: 30px 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+
+    cursor: pointer;
+
+    border: 2px solid #cfa33a;
+    border-radius: 22px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(0, 55, 43, 0.9),
+            rgba(0, 35, 27, 0.95));
+
+    position: relative;
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.choice-card:hover {
+    transform: translateY(-8px);
+    border-color: #f4c64e;
+    box-shadow:
+        0 0 12px rgba(238, 188, 67, 0.45),
+        0 0 35px rgba(238, 188, 67, 0.18);
+}
+
+
+/* =========================================================
+   زرار الشير في صفحة الاختيار
+========================================================= */
+
+.choose-social-wrapper {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 48px;
+    height: 48px;
+    z-index: 10000;
+}
+
+.choose-social-wrapper .social-item {
+    position: absolute;
+    top: 55px;
+    left: 0;
+    width: 48px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #D6B56D;
+    background: rgba(13, 43, 36, 0.98);
+    border: 1px solid rgba(214, 181, 109, 0.4);
+    text-decoration: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px) scale(0.85);
+    transition:
+        transform 0.35s ease,
+        opacity 0.3s ease,
+        background 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    z-index: 10001;
+}
+
+.choose-social-wrapper.open .social-item {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.choose-social-wrapper.open .social-item:hover {
+    background: #D6B56D;
+    color: #071A16;
+    transform: translateY(0) scale(1.1);
+}
+
+
+/* ترتيب الأيقونات */
+.choose-social-wrapper.open .social-whatsapp {
+    top: 60px;
+    transition-delay: 0s;
+}
+
+.choose-social-wrapper.open .social-tiktok {
+    top: 112px;
+    transition-delay: 0.05s;
+}
+
+.choose-social-wrapper.open .social-facebook {
+    top: 164px;
+    transition-delay: 0.1s;
+}
+
+.choose-social-wrapper.open .social-youtube {
+    top: 216px;
+    transition-delay: 0.15s;
+}
+
+.choose-social-wrapper.open .social-email {
+    top: 268px;
+    transition-delay: 0.2s;
+}
+
+.choose-social-wrapper.open .social-phone {
+    top: 320px;
+    transition-delay: 0.25s;
+}
+
+
+/* زرار الشير */
+.choose-social-wrapper .social-toggle {
+    position: relative;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(214, 181, 109, 0.35);
+    background: rgba(214, 181, 109, 0.12);
+    color: #D6B56D;
+    font-size: 19px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+}
+
+.choose-social-wrapper .social-toggle:hover {
+    background: rgba(214, 181, 109, 0.2);
+    box-shadow: 0 0 20px rgba(214, 181, 109, 0.3);
+}
+
+.choose-social-wrapper.open .social-toggle i {
+    transform: rotate(180deg);
+}
+
+.choose-social-wrapper.open .social-toggle {
+    background: #D6B56D;
+    color: #071A16;
+}
+
+
+/* =========================================================
+   Responsive
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .choose-container {
+        padding: 30px 25px 40px;
+    }
+
+    .choose-header h1 {
+        font-size: 27px;
+    }
+
+    .choose-header h1::before {
+        font-size: 36px;
+    }
+
+    .choices {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 25px;
+    }
+
+    .choice-card {
+        width: 350px;
+        max-width: 100%;
+    }
+
+    .choose-social-wrapper {
+        top: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .choose-header h1 {
+        font-size: 22px;
+        gap: 10px;
+    }
+
+    .choose-header h1::before {
+        font-size: 30px;
+    }
+
+    .choice-card {
+        width: 100%;
+        min-height: 280px;
+    }
+
+    .choose-social-wrapper {
+        top: 15px;
+        right: 15px;
+    }
+}
+
+/* =========================================================
+   صفحة حساب الطالب
+========================================================= */
+
+.profile-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.profile-info-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 20px 22px;
+
+    background: rgba(13, 43, 36, 0.5);
+    border: 1px solid rgba(214, 181, 109, 0.15);
+    border-radius: var(--radius-card);
+
+    backdrop-filter: blur(15px);
+
+    transition: var(--transition);
+}
+
+.profile-info-item:hover {
+    border-color: rgba(214, 181, 109, 0.5);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.profile-info-item i {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 14px;
+
+    background: rgba(214, 181, 109, 0.15);
+    color: var(--gold-main);
+
+    font-size: 20px;
+}
+
+.profile-info-item span {
+    display: block;
+    font-size: 12px;
+    color: var(--gold-main);
+    margin-bottom: 5px;
+}
+
+.profile-info-item h3 {
+    font-size: 16px;
+    color: #ffffff;
+    margin: 0;
+    word-break: break-word;
+}
+
+
+/* زرار تسجيل الخروج في صفحة الحساب */
+.logout-row {
+    border: 1px solid rgba(217, 75, 75, 0.3) !important;
+    transition: var(--transition);
+}
+
+.logout-row:hover {
+    border-color: #d94b4b !important;
+    background: rgba(217, 75, 75, 0.15) !important;
+    transform: translateY(-3px);
+}
+
+
+/* للموبايل */
+@media (max-width: 600px) {
+
+    .profile-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-info-item {
+        padding: 16px 18px;
+    }
+
+    .profile-info-item i {
+        width: 42px;
+        height: 42px;
+        font-size: 17px;
+    }
+
+    .profile-info-item h3 {
+        font-size: 14px;
+    }
+
+}
+
+/* =========================================================
+   زرار الرجوع في الهيدر
+========================================================= */
+
+.back-arrow-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(214, 181, 109, 0.35);
+    background: rgba(214, 181, 109, 0.12);
+    color: #D6B56D;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+}
+
+.back-arrow-btn:hover {
+    background: rgba(214, 181, 109, 0.25);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(214, 181, 109, 0.3);
+}

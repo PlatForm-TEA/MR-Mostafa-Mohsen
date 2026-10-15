@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>إنشاء حساب جديد</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body class="login-page">
+
+
+    <div class="arabic-background">
+
+        <div class="arabic-symbol symbol-1">ع</div>
+        <div class="arabic-symbol symbol-2">ض</div>
+        <div class="arabic-symbol symbol-3">ق</div>
+        <div class="arabic-symbol symbol-4">م</div>
+
+        <div class="book">
+            <div class="book-page"></div>
+            <div class="book-page"></div>
+        </div>
+
+        <div class="pen"></div>
+
+        <div class="floating-letter letter-1">أ</div>
+        <div class="floating-letter letter-2">ب</div>
+        <div class="floating-letter letter-3">ل</div>
+        <div class="floating-letter letter-4">ي</div>
+
+    </div>
+
+
+    <div class="dark-overlay"></div>
+
+
+
+    <main class="login-container">
+
+        <div class="login-box">
+
+
+            <div class="login-header">
+
+                <div class="logo-circle">
+
+                    <img src="1.jpeg" alt="شعار المنصة">
+
+                </div>
+
+                <h1>إنشاء حساب جديد</h1>
+
+                <p>انضم إلى منصتك التعليمية</p>
+
+            </div>
+
+
+
+            <form id="signupForm">
+
+
+                <div class="input-box">
+
+                    <span class="input-icon">👤</span>
+
+                    <input type="text" id="username" placeholder="الاسم" autocomplete="name" required>
+
+                </div>
+
+
+
+                <div class="input-box">
+                    <span class="input-icon">📱</span>
+                    <input type="tel" id="phone" placeholder="رقم هاتف الطالب/ة" autocomplete="tel" inputmode="numeric"
+                        required>
+                </div>
+
+
+
+                <div class="input-box">
+                    <span class="input-icon">👨‍👩‍👧</span>
+                    <input type="tel" id="parentPhone" placeholder="رقم هاتف ولي الأمر" autocomplete="tel"
+                        inputmode="numeric" required>
+                </div>
+
+
+
+                <div class="input-box">
+
+                    <span class="input-icon">📧</span>
+
+                    <input type="email" id="email" placeholder="البريد الإلكتروني" autocomplete="email" required>
+
+                </div>
+
+
+
+                <div class="input-box">
+
+                    <span class="input-icon">🔒</span>
+
+                    <input type="password" id="password" placeholder="كلمة السر (6 حروف على الأقل)"
+                        autocomplete="new-password" required>
+
+                </div>
+
+
+
+                <div id="errorBox" class="error-box"></div>
+
+
+
+                <button type="submit" class="login-button">
+
+                    إنشاء الحساب
+
+                    <span>←</span>
+
+                </button>
+
+
+            </form>
+
+
+
+            <div class="login-footer">
+
+                <p>
+
+                    لديك حساب بالفعل؟
+
+                    <a href="login.html" class="signup-link">
+                        سجل دخول
+                    </a>
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <script src="supabase.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

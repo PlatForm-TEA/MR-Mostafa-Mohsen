@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>حسابي - منصة القيصر</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body class="home-page">
+
+    <header class="home-header">
+
+        <!-- زرار الرجوع -->
+        <button class="back-arrow-btn" onclick="history.back()" type="button" title="رجوع">
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+
+        <!-- الهيدر -->
+
+        <div class="social-wrapper" id="socialWrapper">
+
+            <a href="https://wa.me/201019113388" target="_blank" class="social-item social-whatsapp" title="واتساب">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+
+            <a href="https://www.facebook.com/share/14sPUFedYfA/" target="_blank" class="social-item social-facebook"
+                title="فيسبوك">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a href="https://youtube.com/@bodymanosh7169" target="_blank" class="social-item social-youtube"
+                title="يوتيوب">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+
+            <a href="https://tiktok.com/@bodymano4" target="_blank" class="social-item social-tiktok" title="تيك توك">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+
+            <a href="mailto:حط الايميل هنا" class="social-item social-email" title="إيميل">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+
+            <a href="tel:01019113388" class="social-item social-phone" title="تليفون">
+                <i class="fa-solid fa-phone"></i>
+            </a>
+
+            <button class="social-toggle" id="socialToggle" type="button">
+                <i class="fa-solid fa-share-nodes"></i>
+            </button>
+
+        </div>
+
+
+
+        <div class="platform-title">
+            <h1>حسابي</h1>
+            <p>بياناتك الشخصية</p>
+        </div>
+
+
+
+        <button class="profile-icon" id="logoutBtn" title="تسجيل الخروج">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+
+    </header>
+
+
+
+    <!-- المحتوى -->
+
+    <main class="home-content">
+
+        <section class="welcome-section">
+
+            <h2>
+                <span id="welcomeText">أهلاً يا</span>
+                <span id="homeUsername">طالب</span>
+                👋
+            </h2>
+
+            <p>هنا كل بياناتك وإحصائياتك</p>
+
+            <div class="progress-line"></div>
+
+        </section>
+
+
+
+        <!-- بطاقة تعريف -->
+
+        <section class="quote-card">
+
+            <div class="quote-text">
+
+                <h3>البيانات الشخصية</h3>
+                <p>بيانات حسابك في المنصة</p>
+                <small>- منصتك التعليمية -</small>
+
+            </div>
+
+            <div class="quote-icon">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- بيانات الطالب -->
+
+        <section class="platform-sections">
+
+            <h2>بياناتي</h2>
+
+            <div class="profile-info-grid">
+
+                <div class="profile-info-item">
+                    <i class="fa-solid fa-user"></i>
+                    <div>
+                        <span>الاسم</span>
+                        <h3 id="profileName">---</h3>
+                    </div>
+                </div>
+
+                <div class="profile-info-item">
+                    <i class="fa-solid fa-key"></i>
+                    <div>
+                        <span>كود الطالب</span>
+                        <h3 id="profileCode">---</h3>
+                    </div>
+                </div>
+
+                <div class="profile-info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <span>رقم الهاتف</span>
+                        <h3 id="profilePhone">---</h3>
+                    </div>
+                </div>
+
+                <div class="profile-info-item">
+                    <i class="fa-solid fa-people-roof"></i>
+                    <div>
+                        <span>رقم ولي الأمر</span>
+                        <h3 id="profileParentPhone">---</h3>
+                    </div>
+                </div>
+
+                <div class="profile-info-item">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <div>
+                        <span>المرحلة</span>
+                        <h3 id="profileStage">---</h3>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- إحصائيات -->
+
+        <section class="platform-sections">
+
+            <h2>إحصائياتي</h2>
+
+            <div class="profile-info-grid">
+
+                <div class="profile-info-item">
+                    <i class="fa-solid fa-book-open"></i>
+                    <div>
+                        <span>عدد الدروس اللي اتفرجت عليها</span>
+                        <h3 id="watchedCount">0</h3>
+                    </div>
+                </div>
+
+                <div class="profile-info-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                        <span>آخر درس</span>
+                        <h3 id="lastWatched">---</h3>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- إعدادات -->
+
+        <section class="platform-sections">
+
+            <h2>الإعدادات</h2>
+
+            <div class="lessons-list">
+
+                <a href="korsat.html" class="lesson-card lesson-row" style="text-decoration: none; color: inherit;">
+
+                    <div class="lesson-number">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+
+                    <div class="lesson-info">
+                        <span>الكورسات</span>
+                        <h3>الدروس المسجلة</h3>
+                    </div>
+
+                    <span class="lesson-button-inline">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>فتح</span>
+                    </span>
+
+                </a>
+
+                <button class="lesson-card lesson-row logout-row" id="logoutBtn2" type="button"
+                    style="width: 100%; cursor: pointer; background: rgba(217, 75, 75, 0.1); border-color: rgba(217, 75, 75, 0.3);">
+
+                    <div class="lesson-number" style="background: rgba(217, 75, 75, 0.2); color: #ff8888;">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </div>
+
+                    <div class="lesson-info">
+                        <span style="color: #ff8888;">تسجيل الخروج</span>
+                        <h3 style="color: #ff8888;">اخرج من حسابك</h3>
+                    </div>
+
+                    <span class="lesson-button-inline" style="background: linear-gradient(135deg, #d94b4b, #a83232);">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>خروج</span>
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- القائمة السفلية -->
+
+    <nav class="bottom-navigation">
+
+        <a href="account.html" class="nav-item active">
+            <i class="fa-regular fa-user"></i>
+            <span>حسابي</span>
+        </a>
+
+
+        <a href="#" class="nav-item" id="homeNavBtn">
+            <i class="fa-solid fa-house"></i>
+            <span>الرئيسية</span>
+        </a>
+
+
+        <a href="korsat.html" class="nav-item">
+            <i class="fa-solid fa-book-open"></i>
+            <span>الكورسات</span>
+        </a>
+
+    </nav>
+
+
+
+    <script src="supabase.js"></script>
+    <script src="script.js"></script>
+
+
+    <script>
+        /* =========================================================
+           عرض بيانات الطالب
+        ========================================================= */
+
+        document.addEventListener("DOMContentLoaded", async function () {
+
+            const supabase = window.supabaseClient;
+            if (!supabase) return;
+
+            // هات المستخدم
+            const { data, error } = await supabase.auth.getUser();
+            if (error || !data?.user) return;
+
+            const user = data.user;
+
+            // هات البروفايل
+            const { data: profile, error: profileError } = await supabase
+                .from("profiles")
+                .select("username, phone, parent_phone, education_system")
+                .eq("id", user.id)
+                .maybeSingle();
+
+            if (profileError || !profile) return;
+
+            // اعرض البيانات
+            const profileName = document.getElementById("profileName");
+            const profileCode = document.getElementById("profileCode");
+            const profilePhone = document.getElementById("profilePhone");
+            const profileParentPhone = document.getElementById("profileParentPhone");
+            const profileStage = document.getElementById("profileStage");
+
+            if (profileName) profileName.textContent = profile.username || "---";
+            if (profilePhone) profilePhone.textContent = profile.phone || "---";
+            if (profileParentPhone) profileParentPhone.textContent = profile.parent_phone || "---";
+            if (profileStage) profileStage.textContent = profile.education_system || "---";
+
+            // كود الطالب
+            const email = user.email || "";
+            const code = email.split("@")[0].toUpperCase();
+            if (profileCode) profileCode.textContent = code || "---";
+
+
+            // الإحصائيات من localStorage
+            const watched = JSON.parse(localStorage.getItem("watched_lessons") || "[]");
+
+            const watchedCount = document.getElementById("watchedCount");
+            const lastWatched = document.getElementById("lastWatched");
+
+            if (watchedCount) watchedCount.textContent = watched.length;
+
+            if (watched.length > 0) {
+                watched.sort(function (a, b) {
+                    return new Date(b.watched_at) - new Date(a.watched_at);
+                });
+                if (lastWatched) lastWatched.textContent = watched[0].title || "---";
+            }
+
+
+            // زرار الرئيسية حسب المرحلة
+            const homeNavBtn = document.getElementById("homeNavBtn");
+            if (homeNavBtn) {
+                if (profile.education_system === "البكالوريا") {
+                    homeNavBtn.href = "baccalaureate.html";
+                } else {
+                    homeNavBtn.href = "high-school.html";
+                }
+            }
+
+
+            // زرار تسجيل الخروج التاني
+            const logoutBtn2 = document.getElementById("logoutBtn2");
+            if (logoutBtn2) {
+                logoutBtn2.addEventListener("click", async function () {
+                    logoutBtn2.disabled = true;
+                    await supabase.auth.signOut();
+                    sessionStorage.removeItem("welcome_back");
+                    window.location.replace("login.html");
+                });
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>
