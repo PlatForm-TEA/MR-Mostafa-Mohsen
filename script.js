@@ -29,6 +29,7 @@ function initApp() {
     const CHOOSE_PAGE = "choose.html";
     const HIGH_SCHOOL_PAGE = "high-school.html";
     const BACCALAUREATE_PAGE = "baccalaureate.html";
+    const REVIEWS_PAGE = "reviews.html"; // ← ضفنا صفحة التقييمات
     const COMPLETE_PROFILE_PAGE = "complete-profile.html";
 
     function showError(message) {
@@ -52,6 +53,7 @@ function initApp() {
     function getStagePage(stage) {
         if (stage === "الثانوية العامة") return HIGH_SCHOOL_PAGE;
         if (stage === "البكالوريا") return BACCALAUREATE_PAGE;
+        if (stage === "التقييمات") return REVIEWS_PAGE; // ← ضفنا التقييمات
         return null;
     }
 
@@ -365,6 +367,14 @@ function initApp() {
 
     const generalSecondaryBtn = document.getElementById("generalSecondary");
     const baccalaureateBtn = document.getElementById("baccalaureate");
+    const reviewsBtn = document.getElementById("reviews");
+
+    if (reviewsBtn) {
+        reviewsBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            chooseEducationSystem("التقييمات"); 
+        });
+    }
 
     if (generalSecondaryBtn) {
         generalSecondaryBtn.addEventListener("click", function (e) {
@@ -521,7 +531,8 @@ function initApp() {
 
     function getStagePageForCurrentPage(currentPage) {
         if (currentPage === "high-school.html") return HIGH_SCHOOL_PAGE;
-        if (currentPage === BACCALAUREATE_PAGE) return BACCALAUREATE_PAGE;
+        if (currentPage === "baccalaureate.html") return BACCALAUREATE_PAGE;
+        if (currentPage === "reviews.html") return REVIEWS_PAGE;
         return null;
     }
 
@@ -671,6 +682,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     if (profile.education_system === "البكالوريا") {
         homeNavBtn.href = "baccalaureate.html";
+    } else if (profile.education_system === "التقييمات") {
+        homeNavBtn.href = "reviews.html"; // ← زرار الرئيسية هيروح للتقييمات
     } else {
         homeNavBtn.href = "high-school.html";
     }
