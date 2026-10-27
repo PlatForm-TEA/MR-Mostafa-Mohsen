@@ -2,6 +2,18 @@
    منصة القيصر - JavaScript الرئيسي (النسخة الشاملة)
 ========================================================= */
 
+// إضافة أيقونة للمتصفح عشان نمنع خطأ 404
+document.addEventListener("DOMContentLoaded", function() {
+    let link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+    link.href = '1.jpeg'; // أو حط مسار اللوجو بتاعك
+});
+
+
 window.addEventListener("supabaseReady", function () {
     initApp();
 });
