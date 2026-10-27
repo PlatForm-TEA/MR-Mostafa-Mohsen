@@ -4,7 +4,6 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>الوحدة الأولى: العلم والضمير</title>
@@ -159,14 +158,14 @@
                     </summary>
 
                     <div class="video-container">
-                        <iframe src="حط رابط الفديو هنا" title="الدرس الأول: العلم بين القانون والضمير" frameborder="0"
+                        <iframe src="" title="الدرس الأول: العلم بين القانون والضمير" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
                         </iframe>
                     </div>
 
                     <div class="pdf-container">
-                        <a href="حط رابط الملف هنا" target="_blank" class="pdf-button">
+                        <a href="#" target="_blank" class="pdf-button" style="display: none;">
                             <i class="fa-solid fa-file-pdf"></i>
                             <span>تحميل ملف الدرس (PDF)</span>
                         </a>
@@ -199,14 +198,14 @@
                     </summary>
 
                     <div class="video-container">
-                        <iframe src="حط رابط الفديو هنا" title="الدرس الثاني: الخلق جوهر الفضيلة" frameborder="0"
+                        <iframe src="" title="الدرس الثاني: الخلق جوهر الفضيلة" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
                         </iframe>
                     </div>
 
                     <div class="pdf-container">
-                        <a href="حط رابط الملف هنا" target="_blank" class="pdf-button">
+                        <a href="#" target="_blank" class="pdf-button" style="display: none;">
                             <i class="fa-solid fa-file-pdf"></i>
                             <span>تحميل ملف الدرس (PDF)</span>
                         </a>
@@ -239,14 +238,14 @@
                     </summary>
 
                     <div class="video-container">
-                        <iframe src="حط رابط الفديو هنا" title="الدرس الثالث: العلم نور" frameborder="0"
+                        <iframe src="" title="الدرس الثالث: العلم نور" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
                         </iframe>
                     </div>
 
                     <div class="pdf-container">
-                        <a href="حط رابط الملف هنا" target="_blank" class="pdf-button">
+                        <a href="#" target="_blank" class="pdf-button" style="display: none;">
                             <i class="fa-solid fa-file-pdf"></i>
                             <span>تحميل ملف الدرس (PDF)</span>
                         </a>
@@ -281,14 +280,14 @@
                     </summary>
 
                     <div class="video-container">
-                        <iframe src="حط رابط الفديو هنا" title="النحو: الأسماء الخمسة" frameborder="0"
+                        <iframe src="" title="النحو: الأسماء الخمسة" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
                         </iframe>
                     </div>
 
                     <div class="pdf-container">
-                        <a href="حط رابط الملف هنا" target="_blank" class="pdf-button">
+                        <a href="#" target="_blank" class="pdf-button" style="display: none;">
                             <i class="fa-solid fa-file-pdf"></i>
                             <span>تحميل ملف الدرس (PDF)</span>
                         </a>
@@ -323,14 +322,14 @@
                     </summary>
 
                     <div class="video-container">
-                        <iframe src="حط رابط الفديو هنا" title="البلاغة: أساليب الإنشاء" frameborder="0"
+                        <iframe src="" title="البلاغة: أساليب الإنشاء" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
                         </iframe>
                     </div>
 
                     <div class="pdf-container">
-                        <a href="حط رابط الملف هنا" target="_blank" class="pdf-button">
+                        <a href="#" target="_blank" class="pdf-button" style="display: none;">
                             <i class="fa-solid fa-file-pdf"></i>
                             <span>تحميل ملف الدرس (PDF)</span>
                         </a>
@@ -365,7 +364,7 @@
                     </summary>
 
                     <div class="video-container">
-                        <iframe src="حط رابط الفديو هنا" title="الإملاء: التاء المربوطة والهاء والتاء المبسوطة"
+                        <iframe src="" title="الإملاء: التاء المربوطة والهاء والتاء المبسوطة"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
@@ -373,7 +372,7 @@
                     </div>
 
                     <div class="pdf-container">
-                        <a href="حط رابط الملف هنا" target="_blank" class="pdf-button">
+                        <a href="#" target="_blank" class="pdf-button" style="display: none;">
                             <i class="fa-solid fa-file-pdf"></i>
                             <span>تحميل ملف الدرس (PDF)</span>
                         </a>
@@ -422,6 +421,55 @@
 
     <script src="supabase.js"></script>
     <script src="script.js"></script>
+
+    <!-- 🌟 الكود السحري اللي بيجيب الفيديوهات من لوحة التحكم 🌟 -->
+    <script>
+    document.addEventListener("DOMContentLoaded", async function () {
+        const supabase = window.supabaseClient;
+        if (!supabase) return;
+
+        // إحنا في صفحة البكالوريا (الوحدة الأولى)
+        const currentStage = "بكالوريا";
+        const currentSubject = "عام";
+
+        // بنجيب كل الدروس من الداتا بيز
+        const { data: lessons, error } = await supabase
+            .from('lessons_content')
+            .select('*')
+            .eq('stage', currentStage)
+            .eq('subject', currentSubject);
+
+        if (error || !lessons) {
+            console.error("مش لاقي داتا:", error);
+            return;
+        }
+
+        // بندور على الكروت في الصفحة ونطابق اسمها بالاسم اللي في الداتا بيز
+        document.querySelectorAll(".lesson-info h3").forEach(titleElement => {
+            const lessonName = titleElement.textContent.trim();
+            const dbLesson = lessons.find(l => l.lesson_name === lessonName);
+            
+            if (dbLesson) {
+                const detailsElement = titleElement.closest('.lesson-details');
+                
+                // 1. تحديث الفيديو
+                const iframe = detailsElement.querySelector('iframe');
+                if (dbLesson.video_url && iframe) {
+                    iframe.src = dbLesson.video_url;
+                }
+
+                // 2. تحديث الـ PDF
+                const pdfBtn = detailsElement.querySelector('.pdf-button');
+                if (dbLesson.pdf_url && pdfBtn) {
+                    pdfBtn.href = dbLesson.pdf_url;
+                    pdfBtn.style.display = 'inline-flex'; // يظهر الزرار
+                } else if (pdfBtn) {
+                    pdfBtn.style.display = 'none'; // يخفي الزرار لو مفيش ملف
+                }
+            }
+        });
+    });
+    </script>
 
 </body>
 
