@@ -151,12 +151,14 @@
                         </span>
                     </summary>
                     <div class="video-container">
-                        <iframe src="حط رابط الفديو هنا" title="علم البيان" frameborder="0"
+                        <!-- شلنا كلمة حط رابط الفديو هنا عشان ميعملش 404 -->
+                        <iframe src="" title="علم البيان" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
-                        <a href="حط رابط الملف هنا" target="_blank" class="pdf-button">
+                        <!-- الزرار هيظهر ويشتغل لما الكود يجيب اللينك -->
+                        <a href="#" target="_blank" class="pdf-button">
                             <i class="fa-solid fa-file-pdf"></i>
                             <span>تحميل ملف الدرس (PDF)</span>
                         </a>
@@ -177,12 +179,12 @@
                         </span>
                     </summary>
                     <div class="video-container">
-                        <iframe src="حط رابط الفديو هنا" title="علم البديع" frameborder="0"
+                        <iframe src="" title="علم البديع" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
-                        <a href="حط رابط الملف هنا" target="_blank" class="pdf-button">
+                        <a href="#" target="_blank" class="pdf-button">
                             <i class="fa-solid fa-file-pdf"></i>
                             <span>تحميل ملف الدرس (PDF)</span>
                         </a>
@@ -203,12 +205,12 @@
                         </span>
                     </summary>
                     <div class="video-container">
-                        <iframe src="حط رابط الفديو هنا" title="علم المعاني" frameborder="0"
+                        <iframe src="" title="علم المعاني" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
-                        <a href="حط رابط الملف هنا" target="_blank" class="pdf-button">
+                        <a href="#" target="_blank" class="pdf-button">
                             <i class="fa-solid fa-file-pdf"></i>
                             <span>تحميل ملف الدرس (PDF)</span>
                         </a>
@@ -229,12 +231,12 @@
                         </span>
                     </summary>
                     <div class="video-container">
-                        <iframe src="حط رابط الفديو هنا" title="التجربة الشعرية" frameborder="0"
+                        <iframe src="" title="التجربة الشعرية" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
-                        <a href="حط رابط الملف هنا" target="_blank" class="pdf-button">
+                        <a href="#" target="_blank" class="pdf-button">
                             <i class="fa-solid fa-file-pdf"></i>
                             <span>تحميل ملف الدرس (PDF)</span>
                         </a>
@@ -255,12 +257,12 @@
                         </span>
                     </summary>
                     <div class="video-container">
-                        <iframe src="حط رابط الفديو هنا" title="الوحدة العضوية" frameborder="0"
+                        <iframe src="" title="الوحدة العضوية" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
-                        <a href="حط رابط الملف هنا" target="_blank" class="pdf-button">
+                        <a href="#" target="_blank" class="pdf-button">
                             <i class="fa-solid fa-file-pdf"></i>
                             <span>تحميل ملف الدرس (PDF)</span>
                         </a>
@@ -306,13 +308,63 @@
 
     </nav>
 
+    <!-- 1. تعريف الصفحة -->
     <script>
-    window.CURRENT_STAGE = "ثانوية عامة";
-    window.CURRENT_SUBJECT = "البلاغة";
-</script>
-    
+        window.CURRENT_STAGE = "ثانوية عامة";
+        window.CURRENT_SUBJECT = "البلاغة";
+    </script>
+
+    <!-- 2. السوبابيس والسكريبت -->
     <script src="supabase.js"></script>
     <script src="script.js"></script>
+
+    <!-- 3. كود التتبع (عشان نعرف المشكلة فين) -->
+    <script>
+    window.addEventListener("supabaseReady", async function () {
+        const supabase = window.supabaseClient;
+        if (!supabase) return console.log("سوبابيس مش متحمل");
+
+        // بنجيب دروس البلاغة للثانوية
+        const { data: lessons, error } = await supabase
+            .from('lessons_content')
+            .select('*')
+            .eq('stage', 'ثانوية عامة')
+            .eq('subject', 'البلاغة');
+
+        if (error) return console.log("خطأ في الداتا:", error.message);
+        console.log("كل دروس البلاغة اللي في الداتا:", lessons);
+
+        // بندور على الكروت
+        document.querySelectorAll(".lesson-info h3").forEach(titleElement => {
+            const lessonName = titleElement.textContent.trim();
+            const dbLesson = lessons.find(l => l.lesson_name === lessonName);
+            
+            if (dbLesson) {
+                console.log("لقينا الدرس:", lessonName);
+                const detailsElement = titleElement.closest('.lesson-details');
+                const iframe = detailsElement.querySelector('iframe');
+                const pdfBtn = detailsElement.querySelector('.pdf-button');
+                
+                // تركيب الفيديو
+                if (dbLesson.video_url && iframe) {
+                    iframe.src = dbLesson.video_url;
+                }
+
+                // تركيب الـ PDF
+                if (dbLesson.pdf_url && pdfBtn) {
+                    pdfBtn.href = dbLesson.pdf_url;
+                } else if (pdfBtn) {
+                    // لو مفيش PDF
+                    pdfBtn.innerHTML = '<i class="fa-solid fa-file-pdf"></i><span>الملف غير متوفر حالياً</span>';
+                    pdfBtn.style.opacity = "0.5";
+                    pdfBtn.style.pointerEvents = "none";
+                }
+            } else {
+                console.log("الدرس ملوش فيديو:", lessonName);
+            }
+        });
+    });
+    </script>
 
 </body>
 
