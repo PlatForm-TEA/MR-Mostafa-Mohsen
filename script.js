@@ -1,5 +1,5 @@
 /* =========================================================
-   منصة القيصر - JavaScript الرئيسي
+   منصة القيصر - JavaScript الرئيسي (النسخة الشاملة)
 ========================================================= */
 
 window.addEventListener("supabaseReady", function () {
@@ -29,8 +29,67 @@ function initApp() {
     const CHOOSE_PAGE = "choose.html";
     const HIGH_SCHOOL_PAGE = "high-school.html";
     const BACCALAUREATE_PAGE = "baccalaureate.html";
-    const REVIEWS_PAGE = "reviews.html"; // ← ضفنا صفحة التقييمات
+    const REVIEWS_PAGE = "reviews.html";
     const COMPLETE_PROFILE_PAGE = "complete-profile.html";
+
+    /* =========================================================
+       0) الكود السحري: جلب الفيديوهات والـ PDF من الداتا بيز
+    ========================================================= */
+    if (window.supabaseClient) {
+        document.addEventListener("DOMContentLoaded", async function () {
+            // بنقرأ المتغيرات اللي كل صفحة بتحطها عشان نعرف إحنا فين
+            const stage = window.CURRENT_STAGE; 
+            const subject = window.CURRENT_SUBJECT;
+            
+            // لو الصفحة مش محددة (زي صفحة رئيسية)، يبقى مش محتاجة فيديوهات
+            if (!stage || !subject) return; 
+
+            // بنجيب الدروس من سوبابيس
+            const { data: lessons, error } = await supabase
+                .from('lessons_content')
+                .select('*')
+                .eq('stage', stage)
+                .eq('subject', subject);
+
+            if (error || !lessons) return;
+
+            // بندور على الكروت ونطابق الأسماء
+            document.querySelectorAll(".lesson-info h3").forEach(titleElement => {
+                const lessonName = titleElement.textContent.trim();
+                const dbLesson = lessons.find(l => l.lesson_name === lessonName);
+                
+                if (dbLesson) {
+                    const detailsElement = titleElement.closest('.lesson-details');
+                    const iframe = detailsElement.querySelector('iframe');
+                    const pdfBtn = detailsElement.querySelector('.pdf-button');
+                    
+                    // 1. الفيديو
+                    if (dbLesson.video_url && iframe) {
+                        iframe.src = dbLesson.video_url;
+                    }
+
+                    // 2. الـ PDF
+                    if (pdfBtn) {
+                        if (dbLesson.pdf_url) {
+                            pdfBtn.href = dbLesson.pdf_url;
+                            pdfBtn.innerHTML = '<i class="fa-solid fa-file-pdf"></i><span>تحميل ملف الدرس (PDF)</span>';
+                            pdfBtn.style.opacity = "1";
+                            pdfBtn.style.pointerEvents = "auto";
+                        } else {
+                            pdfBtn.href = "#";
+                            pdfBtn.innerHTML = '<i class="fa-solid fa-file-pdf"></i><span>الملف غير متوفر حالياً</span>';
+                            pdfBtn.style.opacity = "0.5";
+                            pdfBtn.style.pointerEvents = "none";
+                        }
+                    }
+                }
+            });
+        });
+    }
+
+    /* =========================================================
+       1) تسجيل الدخول
+    ========================================================= */
 
     function showError(message) {
         const errorBox = document.getElementById("errorBox");
@@ -53,7 +112,7 @@ function initApp() {
     function getStagePage(stage) {
         if (stage === "الثانوية العامة") return HIGH_SCHOOL_PAGE;
         if (stage === "البكالوريا") return BACCALAUREATE_PAGE;
-        if (stage === "التقييمات") return REVIEWS_PAGE; // ← ضفنا التقييمات
+        if (stage === "التقييمات") return REVIEWS_PAGE;
         return null;
     }
 
@@ -73,10 +132,6 @@ function initApp() {
         }
         return data.user || null;
     }
-
-    /* =========================================================
-       1) تسجيل الدخول
-    ========================================================= */
 
     const loginForm = document.getElementById("loginForm");
 
@@ -683,7 +738,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (profile.education_system === "البكالوريا") {
         homeNavBtn.href = "baccalaureate.html";
     } else if (profile.education_system === "التقييمات") {
-        homeNavBtn.href = "reviews.html"; // ← زرار الرئيسية هيروح للتقييمات
+        homeNavBtn.href = "reviews.html"; 
     } else {
         homeNavBtn.href = "high-school.html";
     }
