@@ -204,7 +204,6 @@
     <!-- ملف السوبابيس (بس) -->
     <script src="supabase.js"></script>
 
-    <!-- الكود الذكي لجلب الفيديوهات (شغال في الصفحة دي بس) -->
     <script>
     window.addEventListener("supabaseReady", async function () {
         const supabase = window.supabaseClient;
@@ -212,12 +211,11 @@
 
         console.log("🔍 بندور على الدروس في البكالوريا...");
 
-        // بنجيب دروس البكالوريا (مادة عام)
+        // بنجيب دروس البكالوريا كلها (بدون فلترة المادة)
         const { data: lessons, error } = await supabase
             .from('lessons_content')
             .select('*')
-            .eq('stage', 'بكالوريا')
-            .eq('subject', 'عام');
+            .eq('stage', 'بكالوريا'); // شيلنا شرط المادة
 
         if (error) {
             console.error("❌ خطأ:", error.message);
@@ -225,7 +223,7 @@
         }
 
         if (!lessons || lessons.length === 0) {
-            console.warn("⚠️ مفيش دروس في الداتا بيز.");
+            console.warn("⚠️ مفيش دروس في الداتا بيز للبكالوريا.");
             return;
         }
 
@@ -234,6 +232,7 @@
         // بندور على الكروت ونطابقها
         document.querySelectorAll(".lesson-info h3").forEach(titleElement => {
             const lessonName = titleElement.textContent.trim();
+            // بندور على الدرس بالاسم بس
             const dbLesson = lessons.find(l => l.lesson_name === lessonName);
             
             if (dbLesson) {
@@ -250,8 +249,6 @@
                     pdfBtn.href = dbLesson.pdf_url;
                     pdfBtn.style.display = 'inline-flex';
                 }
-            } else {
-                console.log(`❓ الدرس "${lessonName}" ملوش فيديو.`);
             }
         });
     });
