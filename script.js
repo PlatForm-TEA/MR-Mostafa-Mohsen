@@ -75,7 +75,7 @@ function initApp() {
                     const iframe = detailsElement.querySelector('iframe');
                     const pdfBtn = detailsElement.querySelector('.pdf-button');
                     
-                    // 1. الفيديو
+                    // 1. الفيديو: بنحط اللينك العادي عشان ميبوظش
                     if (dbLesson.video_url && iframe) {
                         iframe.src = dbLesson.video_url;
                     }
