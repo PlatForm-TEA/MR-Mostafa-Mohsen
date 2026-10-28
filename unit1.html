@@ -81,7 +81,7 @@
                         </div>
                         <span class="lesson-button-inline"><i class="fa-solid fa-play"></i><span>متابعة</span></span>
                     </summary>
-                    <div class="video-container">
+                    <div class="video-container" oncontextmenu="return false;">
                         <iframe src="" title="الدرس الأول" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
@@ -101,7 +101,7 @@
                         </div>
                         <span class="lesson-button-inline"><i class="fa-solid fa-play"></i><span>متابعة</span></span>
                     </summary>
-                    <div class="video-container">
+                    <div class="video-container" oncontextmenu="return false;">
                         <iframe src="" title="الدرس الثاني" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
@@ -121,7 +121,7 @@
                         </div>
                         <span class="lesson-button-inline"><i class="fa-solid fa-play"></i><span>متابعة</span></span>
                     </summary>
-                    <div class="video-container">
+                    <div class="video-container" oncontextmenu="return false;">
                         <iframe src="" title="الدرس الثالث" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
@@ -141,7 +141,7 @@
                         </div>
                         <span class="lesson-button-inline"><i class="fa-solid fa-play"></i><span>متابعة</span></span>
                     </summary>
-                    <div class="video-container">
+                    <div class="video-container" oncontextmenu="return false;">
                         <iframe src="" title="النحو" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
@@ -161,7 +161,7 @@
                         </div>
                         <span class="lesson-button-inline"><i class="fa-solid fa-play"></i><span>متابعة</span></span>
                     </summary>
-                    <div class="video-container">
+                    <div class="video-container" oncontextmenu="return false;">
                         <iframe src="" title="البلاغة" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
@@ -181,7 +181,7 @@
                         </div>
                         <span class="lesson-button-inline"><i class="fa-solid fa-play"></i><span>متابعة</span></span>
                     </summary>
-                    <div class="video-container">
+                    <div class="video-container" oncontextmenu="return false;">
                         <iframe src="" title="الإملاء" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
@@ -201,66 +201,15 @@
         <a href="korsat.html" class="nav-item active"><i class="fa-solid fa-book-open"></i><span>الكورسات</span></a>
     </nav>
 
-    <!-- استدعاء سوبابيس -->
+    <!-- 1. المتغيرات بتاعت الصفحة (البكالوريا) -->
+    <script>
+        window.CURRENT_STAGE = "بكالوريا";
+        window.CURRENT_SUBJECT = "عام";
+    </script>
+
+    <!-- 2. ملفات السوبابيس والسكريبت -->
     <script src="supabase.js"></script>
     <script src="script.js"></script>
-
-    <!-- الكود الذكي اللي بيستنى تحميل سوبابيس -->
-    <script>
-    // بنستنى لما سوبابيس يجهز خالص
-    window.addEventListener("supabaseReady", async function () {
-        const supabase = window.supabaseClient;
-        if (!supabase) {
-            console.error("Supabase مش متحمل!");
-            return;
-        }
-
-        console.log("🔍 جاري البحث في قاعدة البيانات...");
-
-        // بنجيب كل الدروس من الداتا بيز
-        const { data: lessons, error } = await supabase
-            .from('lessons_content')
-            .select('*');
-
-        if (error) {
-            console.error("❌ خطأ في قاعدة البيانات:", error.message);
-            return;
-        }
-
-        console.log("✅ الداتا اللي رجعت من السوبابيس:", lessons);
-
-        if (!lessons || lessons.length === 0) {
-            console.warn("⚠️ جدول lessons_content فاضي! مفيش أي فيديوهات متسجلة.");
-            return;
-        }
-
-        // بندور على الكروت في الصفحة ونطابقها بالاسم
-        document.querySelectorAll(".lesson-info h3").forEach(titleElement => {
-            const lessonName = titleElement.textContent.trim();
-            const dbLesson = lessons.find(l => l.lesson_name === lessonName);
-            
-            if (dbLesson) {
-                console.log("🎯 لقينا الدرس:", lessonName, dbLesson);
-                const detailsElement = titleElement.closest('.lesson-details');
-                
-                // 1. تحديث الفيديو
-                const iframe = detailsElement.querySelector('iframe');
-                if (dbLesson.video_url && iframe) {
-                    iframe.src = dbLesson.video_url;
-                }
-
-                // 2. تحديث الـ PDF
-                const pdfBtn = detailsElement.querySelector('.pdf-button');
-                if (dbLesson.pdf_url && pdfBtn) {
-                    pdfBtn.href = dbLesson.pdf_url;
-                    pdfBtn.style.display = 'inline-flex';
-                }
-            } else {
-                console.log(`❓ الدرس "${lessonName}" ملوش فيديو في الداتا بيز.`);
-            }
-        });
-    });
-    </script>
 
 </body>
 </html>
