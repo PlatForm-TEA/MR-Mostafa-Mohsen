@@ -81,7 +81,7 @@
                         </div>
                         <span class="lesson-button-inline"><i class="fa-solid fa-play"></i><span>متابعة</span></span>
                     </summary>
-                    <div class="video-container">
+                    <div class="video-container" oncontextmenu="return false;">
                         <iframe src="" title="الدرس الأول" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
@@ -102,7 +102,7 @@
                         </div>
                         <span class="lesson-button-inline"><i class="fa-solid fa-play"></i><span>متابعة</span></span>
                     </summary>
-                    <div class="video-container">
+                    <div class="video-container" oncontextmenu="return false;">
                         <iframe src="" title="الدرس الثاني" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
@@ -123,7 +123,7 @@
                         </div>
                         <span class="lesson-button-inline"><i class="fa-solid fa-play"></i><span>متابعة</span></span>
                     </summary>
-                    <div class="video-container">
+                    <div class="video-container" oncontextmenu="return false;">
                         <iframe src="" title="الدرس الثالث" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
@@ -144,7 +144,7 @@
                         </div>
                         <span class="lesson-button-inline"><i class="fa-solid fa-play"></i><span>متابعة</span></span>
                     </summary>
-                    <div class="video-container">
+                    <div class="video-container" oncontextmenu="return false;">
                         <iframe src="" title="الدرس الرابع" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
@@ -165,7 +165,7 @@
                         </div>
                         <span class="lesson-button-inline"><i class="fa-solid fa-play"></i><span>متابعة</span></span>
                     </summary>
-                    <div class="video-container">
+                    <div class="video-container" oncontextmenu="return false;">
                         <iframe src="" title="الدرس الخامس" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
@@ -187,15 +187,65 @@
         <a href="korsat.html" class="nav-item"><i class="fa-solid fa-book-open"></i><span>الكورسات</span></a>
     </nav>
 
-    <!-- 1. المتغيرات بتاعت الصفحة -->
+    <!-- 1. المتغيرات بتاعت الصفحة (المتحرر) -->
     <script>
         window.CURRENT_STAGE = "ثانوية عامة";
         window.CURRENT_SUBJECT = "المتحرر";
     </script>
 
-    <!-- 2. ملفات السوبابيس والسكريبت -->
+    <!-- 2. ملف السوبابيس -->
     <script src="supabase.js"></script>
-    <script src="script.js"></script>
+
+    <!-- 3. الكود السحري اللي بيجيب الداتا من السوبابيس -->
+    <script>
+    window.addEventListener("supabaseReady", async function () {
+        const supabase = window.supabaseClient;
+        if (!supabase) return;
+
+        console.log("🔍 بندور على دروس المتحرر...");
+
+        // بنجيب دروس المتحرر
+        const { data: lessons, error } = await supabase
+            .from('lessons_content')
+            .select('*')
+            .eq('stage', 'ثانوية عامة')
+            .eq('subject', 'المتحرر');
+
+        if (error) {
+            console.error("❌ خطأ:", error.message);
+            return;
+        }
+
+        if (!lessons || lessons.length === 0) {
+            console.warn("⚠️ مفيش دروس في الداتا بيز للمتحرر.");
+            return;
+        }
+
+        console.log("✅ الدروس اللي رجعت:", lessons);
+
+        // بندور على الكروت ونطابقها
+        document.querySelectorAll(".lesson-info h3").forEach(titleElement => {
+            const lessonName = titleElement.textContent.trim();
+            const dbLesson = lessons.find(l => l.lesson_name === lessonName);
+            
+            if (dbLesson) {
+                console.log("🎯 لقينا:", lessonName);
+                const detailsElement = titleElement.closest('.lesson-details');
+                const iframe = detailsElement.querySelector('iframe');
+                const pdfBtn = detailsElement.querySelector('.pdf-button');
+                
+                if (dbLesson.video_url && iframe) {
+                    iframe.src = dbLesson.video_url;
+                }
+
+                if (dbLesson.pdf_url && pdfBtn) {
+                    pdfBtn.href = dbLesson.pdf_url;
+                    pdfBtn.style.display = 'inline-flex';
+                }
+            }
+        });
+    });
+    </script>
 
 </body>
 </html>
