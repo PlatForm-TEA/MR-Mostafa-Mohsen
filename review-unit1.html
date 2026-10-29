@@ -86,128 +86,9 @@
 
             <h2>التقييمات</h2>
 
-            <div class="lessons-list">
-
-                <!-- التقييم الأول -->
-                <details class="lesson-details">
-                    <summary class="lesson-card lesson-row">
-                        <div class="lesson-number">1</div>
-                        <div class="lesson-info">
-                            <span>التقييم الأول</span>
-                            <h3>التقييم الأول - الوحدة الأولى</h3>
-                        </div>
-                        <span class="lesson-button-inline">
-                            <i class="fa-solid fa-play"></i>
-                            <span>متابعة</span>
-                        </span>
-                    </summary>
-                    <div class="video-container">
-                        <iframe src="حط رابط الفديو هنا" title="التقييم الأول" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="pdf-container">
-                        <a href="حط رابط الملف هنا" target="_blank" class="pdf-button">
-                            <i class="fa-solid fa-file-pdf"></i>
-                            <span>تحميل ملف التقييم (PDF)</span>
-                        </a>
-                    </div>
-                </details>
-
-                <!-- التقييم الثاني -->
-                <details class="lesson-details">
-                    <summary class="lesson-card lesson-row">
-                        <div class="lesson-number">2</div>
-                        <div class="lesson-info">
-                            <span>التقييم الثاني</span>
-                            <h3>التقييم الثاني - الوحدة الأولى</h3>
-                        </div>
-                        <span class="lesson-button-inline">
-                            <i class="fa-solid fa-play"></i>
-                            <span>متابعة</span>
-                        </span>
-                    </summary>
-                    <div class="video-container">
-                        <iframe src="حط رابط الفديو هنا" title="التقييم الثاني" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="pdf-container">
-                        <a href="حط رابط الملف هنا" target="_blank" class="pdf-button">
-                            <i class="fa-solid fa-file-pdf"></i>
-                            <span>تحميل ملف التقييم (PDF)</span>
-                        </a>
-                    </div>
-                </details>
-
-                <!-- التقييم الثالث -->
-                <details class="lesson-details">
-                    <summary class="lesson-card lesson-row">
-                        <div class="lesson-number">3</div>
-                        <div class="lesson-info">
-                            <span>التقييم الثالث</span>
-                            <h3>التقييم الثالث - الوحدة الأولى</h3>
-                        </div>
-                        <span class="lesson-button-inline">
-                            <i class="fa-solid fa-play"></i>
-                            <span>متابعة</span>
-                        </span>
-                    </summary>
-                    <div class="video-container">
-                        <iframe src="حط رابط الفديو هنا" title="التقييم الثالث" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="pdf-container">
-                        <a href="حط رابط الملف هنا" target="_blank" class="pdf-button">
-                            <i class="fa-solid fa-file-pdf"></i>
-                            <span>تحميل ملف التقييم (PDF)</span>
-                        </a>
-                    </div>
-                </details>
-
-                <!-- التقييم الرابع -->
-                <details class="lesson-details">
-                    <summary class="lesson-card lesson-row">
-                        <div class="lesson-number">4</div>
-                        <div class="lesson-info">
-                            <span>التقييم الرابع</span>
-                            <h3>التقييم الرابع - الوحدة الأولى</h3>
-                        </div>
-                        <span class="lesson-button-inline">
-                            <i class="fa-solid fa-play"></i>
-                            <span>متابعة</span>
-                        </span>
-                    </summary>
-                    <div class="video-container">
-                        <iframe src="حط رابط الفديو هنا" title="التقييم الرابع" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="pdf-container">
-                        <a href="حط رابط الملف هنا" target="_blank" class="pdf-button">
-                            <i class="fa-solid fa-file-pdf"></i>
-                            <span>تحميل ملف التقييم (PDF)</span>
-                        </a>
-                    </div>
-                </details>
-
-                <!-- التقييم الخامس -->
-                <details class="lesson-details">
-                    <summary class="lesson-card lesson-row">
-                        <div class="lesson-number">5</div>
-                        <div class="lesson-info">
-                            <span>التقييم الخامس</span>
-                            <h3>التقييم الخامس - الوحدة الأولى</h3>
-                        </div>
-                        <span class="lesson-button-inline">
-                            <i class="fa-solid fa-play"></i>
-                            <span>متابعة</span>
-                        </span>
-                    </summary>
-                    <div class="video-container">
-                        <iframe src="حط رابط الفديو هنا" title="التقييم الخامس" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="pdf-container">
-                        <a href="حط رابط الملف هنا" target="_blank" class="pdf-button">
-                            <i class="fa-solid fa-file-pdf"></i>
-                            <span>تحميل ملف التقييم (PDF)</span>
-                        </a>
-                    </div>
-                </details>
-
+            <!-- هنا هنحط التقييمات اللي جاية من الداتابيز -->
+            <div class="lessons-list" id="reviewsList">
+                <p style="text-align:center; color:#888;">جاري تحميل التقييمات...</p>
             </div>
 
         </section>
@@ -235,6 +116,92 @@
 
     <script src="supabase.js"></script>
     <script src="script.js"></script>
+
+    <script>
+        // ننتظر تحميل Supabase
+        window.addEventListener("supabaseReady", async function() {
+            const supabase = window.supabaseClient;
+            if (!supabase) return;
+
+            const reviewsList = document.getElementById("reviewsList");
+
+            // اسم الوحدة اللي عايزين نجيب تقييماتها
+            const currentUnit = "الوحدة الأولى"; 
+
+            // 1. بنجيب البيانات من الداتابيز
+            const { data, error } = await supabase
+                .from('lessons_content')
+                .select('*')
+                .eq('stage', 'التقييمات')
+                .eq('subject', currentUnit)
+                .order('lesson_name', { ascending: true });
+
+            if (error) {
+                reviewsList.innerHTML = `<p style="text-align:center; color:red;">خطأ في التحميل: ${error.message}</p>`;
+                return;
+            }
+
+            if (data.length === 0) {
+                reviewsList.innerHTML = '<p style="text-align:center; color:#888;">لا توجد تقييمات مضافة بعد.</p>';
+                return;
+            }
+
+            // 2. بنفضي المكان ونبني الكروت
+            reviewsList.innerHTML = "";
+
+            data.forEach((review, index) => {
+                // بنعمل رقم التقييم من اسمه (مثلاً "التقييم الأول" -> 1)
+                // لو مش عارفين، بنستخدم الترتيب
+                let reviewNumber = index + 1;
+
+                // الفيديو
+                let videoUrl = review.video_url || "about:blank";
+                
+                // ملف الـ PDF
+                let pdfUrl = review.pdf_url || "#";
+                let pdfDisplay = review.pdf_url ? "inline-block" : "none";
+
+                const details = document.createElement("details");
+                details.className = "lesson-details";
+
+                const summary = document.createElement("summary");
+                summary.className = "lesson-card lesson-row";
+
+                summary.innerHTML = `
+                    <div class="lesson-number">${reviewNumber}</div>
+                    <div class="lesson-info">
+                        <span>${review.lesson_name || "تقييم"}</span>
+                        <h3>${review.lesson_name || "تقييم"} - ${currentUnit}</h3>
+                    </div>
+                    <span class="lesson-button-inline">
+                        <i class="fa-solid fa-play"></i>
+                        <span>متابعة</span>
+                    </span>
+                `;
+
+                const videoContainer = document.createElement("div");
+                videoContainer.className = "video-container";
+                videoContainer.innerHTML = `
+                    <iframe src="${videoUrl}" title="${review.lesson_name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                `;
+
+                const pdfContainer = document.createElement("div");
+                pdfContainer.className = "pdf-container";
+                pdfContainer.innerHTML = `
+                    <a href="${pdfUrl}" target="_blank" class="pdf-button" style="display: ${pdfDisplay};">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <span>تحميل ملف التقييم (PDF)</span>
+                    </a>
+                `;
+
+                details.appendChild(summary);
+                details.appendChild(videoContainer);
+                details.appendChild(pdfContainer);
+
+                reviewsList.appendChild(details);
+            });
+        });
+    </script>
 
 </body>
 
